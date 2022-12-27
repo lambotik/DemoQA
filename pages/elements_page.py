@@ -12,6 +12,8 @@ from utilities.logger import Logger
 class TextBoxPage(BasePage):
     locators = TextBoxPageLocators()
 
+    # Actions
+
     """"Заполняет форму рандомными данными при помощи генератора и библиотеки faker.
     Возвращает данные внесенные в форму"""
 
@@ -59,17 +61,36 @@ class TextBoxPage(BasePage):
 
     def check_field_form_created(self):
         created_full_name = self.element_is_present(self.locators.CREATED_FULL_NAME).text.split(':')[1]
+        print(f'Checked name in table: {created_full_name}')
         created_email = self.element_is_present(self.locators.CREATED_EMAIL).text.split(':')[1]
+        print(f'Checked email in table: {created_email}')
         created_current_address = self.element_is_present(self.locators.CREATED_CURRENT_ADDRESS).text.split(':')[1]
+        print(f'Checked current Address in table: {created_current_address}')
         created_permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text.split(':')[1]
+        print(f'Checked permanent Address in table: {created_permanent_address}')
         global created_data
         created_data = created_full_name, created_email, created_current_address, created_permanent_address
         return created_full_name, created_email, created_current_address, created_permanent_address
 
+    # Methods
+
+    def assert_fill_all_fields_and_check_output_in_table(self):
+        Logger.add_start_step(method='assert_fill_all_fields_and_check_output_in_table')
+        self.remove_footer()
+        self.remove_fixedban()
+        full_name, email, current_address, permanent_address = self.fill_all_fields()
+        created_full_name, created_email, created_current_address, created_permanent_address = self.check_field_form_created()
+        assert full_name == created_full_name, 'Not Correct Full Name'
+        assert email == created_email, 'Not Correct Email'
+        assert current_address == created_current_address, 'Not Correct Current Address'
+        assert permanent_address == created_permanent_address, 'Not Correct Permanent Address'
+        assert self.get_input_data() == self.get_created_data(), 'Input data and Created data is not equal'
+        Logger.add_end_step(url=self.driver.current_url, method='assert_fill_all_fields_and_check_output_in_table')
 
 class CheckBoxPage(BasePage):
-
     locators = CheckBoxPageLocators()
+
+    # Actions
 
     """Открывает весь список чек боксов"""
 
@@ -126,6 +147,8 @@ class CheckBoxPage(BasePage):
         print('Comparing the results')
         assert input_checkboxes == output_checkboxes, 'Not correct checked checkboxes result'
 
+    # Methods
+
     def check_box(self):
         Logger.add_start_step(method='check_box')
         self.remove_footer()
@@ -134,6 +157,7 @@ class CheckBoxPage(BasePage):
         self.click_random_check_box()
         self.assert_checkbox_input_and_output()
         Logger.add_end_step(url=self.driver.current_url, method='check_box')
+
 
 class RadioButtonPage(BasePage):
     locators = RadioButtonPageLocators()
@@ -173,10 +197,10 @@ class RadioButtonPage(BasePage):
         Logger.add_end_step(url=self.driver.current_url, method='radio_button')
 
 
-
-
 class WebTablePage(BasePage):
     locators = WebTablePageLocators()
+
+    # Actions
 
     def add_new_person(self):
         count = 1
@@ -213,6 +237,7 @@ class WebTablePage(BasePage):
         for item in people_list:
             data.append(item.text.splitlines())
         print('Get A List Of The Table Data')
+        print(f'List of the table {data}')
         return data
 
     def selected_random_keyword(self):
@@ -349,6 +374,58 @@ class WebTablePage(BasePage):
         list_rows = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
         return len(list_rows)
 
+    # Methods
+
+    def web_table_add_new_person_and_check_this(self):
+        Logger.add_start_step(method='web_table_add_new_person_and_check_this')
+        new_person = self.add_new_person()
+        table_person = self.check_added_new_person()
+        print('Compare whether the created data appeared in the table')
+        assert f'{new_person}' in f'{table_person}', 'Created data is not in the table'
+        Logger.add_end_step(url=self.driver.current_url, method='web_table_add_new_person_and_check_this')
+
+    def web_table_search_added_person(self):
+        Logger.add_start_step(method='web_table_search_added_person')
+        self.add_new_person()
+        self.check_added_new_person()
+        random_key_word = self.selected_random_keyword()
+        self.search_some_person(f'{random_key_word}')
+        table_result = self.check_search_person()
+        print(f'Random key word: {random_key_word}')
+        print(f'Table result: {table_result}')
+        assert f'{random_key_word}' in f'{table_result}', 'The Person Was Not Found In The Table'
+        Logger.add_end_step(url=self.driver.current_url, method='web_table_search_added_person')
+
+    def web_table_update_person_info(self):
+        Logger.add_start_step(method='web_table_update_person_info')
+        self.remove_fixedban()
+        last_name = self.add_new_person()[1]
+        self.search_some_person(last_name)
+        edit_person_data = self.update_person_info()
+        row = self.check_search_person()
+        for edit_person_data in str(row):
+            assert str(edit_person_data) in str(row), f'Updated element {edit_person_data} not in the table'
+        Logger.add_end_step(url=self.driver.current_url, method='web_table_update_person_info')
+
+    def remove_person_from_web_table_and_check_this(self):
+        Logger.add_start_step(method='remove_person_from_web_table_and_check_this')
+        self.remove_fixedban()
+        email = self.add_new_person()[3]
+        self.search_some_person(email)
+        self.delete_person(f'{email}')
+        text = self.check_deleted()
+        print(f'Checked deleted by email {email}')
+        assert text == 'No rows found', f'{email} Person have not deleted'
+        Logger.add_end_step(url=self.driver.current_url, method='remove_person_from_web_table_and_check_this')
+
+    def change_the_number_of_rows_and_count_them(self):
+        Logger.add_start_step(method='change_the_number_of_rows_and_count_them')
+        self.remove_fixedban()
+        self.remove_footer()
+        count = self.change_the_number_of_line()
+        assert count == [5, 10, 20, 25, 50, 100], 'Selected number of rows is not equal to those presented'
+        Logger.add_end_step(url=self.driver.current_url, method='change_the_number_of_rows_and_count_them')
+
 
 class ButtonPage(BasePage):
     locators = ButtonPageLocators()
@@ -377,6 +454,8 @@ class ButtonPage(BasePage):
     # Method
     def different_click_on_the_buttons(self):
         Logger.add_start_step(method='different_click_on_the_buttons')
+        self.remove_footer()
+        self.remove_fixedban()
         self.double_click()
         self.right_click()
         self.click_me()

@@ -1,8 +1,9 @@
 import time
-
+import os
+os.environ["PYTHONIOENCODING"] = "utf-8"
 import pytest
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage
 
 
 class TestElements:
@@ -53,9 +54,17 @@ class TestElements:
             web_table_page.open()
             web_table_page.change_the_number_of_rows_and_count_them()
 
-    class TestButton():
+    class TestButton:
 
         def test_different_click_on_the_buttons(self, driver, set_group):
             button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
             button_page.different_click_on_the_buttons()
+
+    class TestLinks:
+
+        def test_check_link_response_code_200(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_response_code_200()
+

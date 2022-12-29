@@ -62,6 +62,8 @@ class BasePage:
         action = ActionChains(self.driver)
         action.click(element).perform()
 
+    def got_to_a_new_tab(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
 
 
 

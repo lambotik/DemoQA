@@ -1,10 +1,12 @@
+import os
 import random
 
+import requests
 from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonPageLocators
+    WebTablePageLocators, ButtonPageLocators, LinksPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -460,3 +462,47 @@ class ButtonPage(BasePage):
         self.right_click()
         self.click_me()
         Logger.add_end_step(url=self.driver.current_url, method='different_click_on_the_buttons')
+
+class LinksPage(BasePage):
+
+    locators = LinksPageLocators()
+
+    # Actions
+
+    def link_response_code_200(self):
+        home_link = self.element_is_present(self.locators.HOME_LINK)
+        home_link_href = home_link.get_attribute('href')
+        home_link_status_code = requests.get(home_link_href).status_code
+        if home_link_status_code == 200:
+            print('Click on home link')
+            home_link.click()
+            print('Go to a new tab')
+            self.got_to_a_new_tab()
+            url = self.driver.current_url
+            print(f'Link href: {home_link_href}\nUrl: {url}\nUrl status code: {home_link_status_code}')
+            return home_link_href, url, home_link_status_code
+        else:
+            request = requests.get(f'{home_link_href}')
+            home_link_status_code = request.status_code
+            home_link.click()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            url = self.driver.current_url
+            print(f'Link href: {home_link_href}\nUrl: {url}\nUrl status code: {home_link_status_code}')
+            return home_link_href, url, home_link_status_code
+
+    def assert_link_response_code_200(self):
+        href_link, current_link, status_code = self.link_response_code_200()
+        assert href_link == current_link, f'Bad link url {status_code}'
+
+
+
+
+    # Methods
+
+    def check_link_response_code_200(self):
+        Logger.add_start_step(method='check_link_response_code_200')
+        self.assert_link_response_code_200()
+        Logger.add_end_step(url=self.driver.current_url, method='check_link_response_code_200')
+
+
+

@@ -1,0 +1,105 @@
+
+-----
+Test: test_elements.py::TestElements::TestTextBox::test_fill_all_fields_and_check_output_in_table (call)
+Start time: 2022-12-30 02:01:48.652586
+Start name method: assert_fill_all_fields_and_check_output_in_table
+
+End time: 2022-12-30 02:01:50.679584
+End name method: assert_fill_all_fields_and_check_output_in_table
+URL: https://demoqa.com/text-box
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestCheckBox::test_check_box (call)
+Start time: 2022-12-30 02:02:01.292638
+Start name method: check_box
+
+End time: 2022-12-30 02:02:03.473638
+End name method: check_box
+URL: https://demoqa.com/checkbox
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestRadioButton::test_radio_button (call)
+Start time: 2022-12-30 02:02:13.530034
+Start name method: radio_button
+
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_add_new_person_and_check_this (call)
+Start time: 2022-12-30 02:02:21.536927
+Start name method: web_table_add_new_person_and_check_this
+
+End time: 2022-12-30 02:02:23.474929
+End name method: web_table_add_new_person_and_check_this
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_search_added_person (call)
+Start time: 2022-12-30 02:02:33.619494
+Start name method: web_table_search_added_person
+
+End time: 2022-12-30 02:02:35.964489
+End name method: web_table_search_added_person
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_update_person_info (call)
+Start time: 2022-12-30 02:02:46.647226
+Start name method: web_table_update_person_info
+
+End time: 2022-12-30 02:02:49.701226
+End name method: web_table_update_person_info
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_remove_person_from_web_table_and_check_this (call)
+Start time: 2022-12-30 02:03:00.535466
+Start name method: remove_person_from_web_table_and_check_this
+
+End time: 2022-12-30 02:03:02.719135
+End name method: remove_person_from_web_table_and_check_this
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_change_the_number_of_rows_and_count_them (call)
+Start time: 2022-12-30 02:03:13.803923
+Start name method: change_the_number_of_rows_and_count_them
+
+End time: 2022-12-30 02:03:15.958908
+End name method: change_the_number_of_rows_and_count_them
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestButton::test_different_click_on_the_buttons (call)
+Start time: 2022-12-30 02:03:27.131859
+Start name method: different_click_on_the_buttons
+
+End time: 2022-12-30 02:03:28.260927
+End name method: different_click_on_the_buttons
+URL: https://demoqa.com/buttons
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_check_link_response_code_200 (call)
+Start time: 2022-12-30 02:03:39.705742
+Start name method: check_link_response_code_200
+
+End time: 2022-12-30 02:03:41.371744
+End name method: check_link_response_code_200
+URL: https://demoqa.com/
+
+-----

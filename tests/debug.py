@@ -10,4 +10,6 @@ import random
 # print(data2)
 #
 # assert data1 == data2
-print(17*2)
+# print(17*2)
+word = 'колбаса'
+print(word.count('а'))

@@ -65,9 +65,17 @@ class ButtonPageLocators:
     RIGHT_MESSAGE = (By.XPATH, '//p[@id="rightClickMessage"]')
     CLICK_ME_MESSAGE = (By.XPATH, '//p[@id="dynamicClickMessage"]')
 
+
 class LinksPageLocators:
     HOME_LINK = (By.XPATH, '//a[.="Home"]')
-    BAD_REQUEST = (By.XPATH, '//a[@id="bad-request"]')
+    BAD_REQUEST_LINK = (By.XPATH, '//a[@id="bad-request"]')
+    CREATED_LINK = (By.XPATH, '//a[@id="created"]')
+    NO_CONTENT_LINK = (By.XPATH, '//a[@id="no-content"]')
+    MOVED_LINK = (By.XPATH, '//a[@id="moved"]')
+    UNAUTHORIZED_LINK = (By.XPATH, '//a[@id="unauthorized"]')
+    FORBIDDEN_LINK = (By.XPATH, '//a[@id="forbidden"]')
+    NOT_FOUND_LINK = (By.XPATH, '//a[@id="invalid-url"]')
+
 
 
 

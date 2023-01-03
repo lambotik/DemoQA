@@ -1,6 +1,3 @@
-import time
-import os
-os.environ["PYTHONIOENCODING"] = "utf-8"
 import pytest
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage
@@ -48,6 +45,7 @@ class TestElements:
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
             web_table_page.remove_person_from_web_table_and_check_this()
+
         @pytest.mark.xfail
         def test_change_the_number_of_rows_and_count_them(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
@@ -63,8 +61,49 @@ class TestElements:
 
     class TestLinks:
 
-        def test_check_link_response_code_200(self, driver):
+        def test_home_link_response_code_200(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_response_code_200()
+        @pytest.mark.xfail
+        def test_bad_request_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_bad_response()
+
+        @pytest.mark.xfail
+        def test_created_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_created_response()
+
+        @pytest.mark.xfail
+        def test_no_content_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_no_content_response()
+
+        @pytest.mark.xfail
+        def test_moved_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_moved_response()
+
+        @pytest.mark.xfail
+        def test_unauthorized_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_unauthorized_response()
+
+        @pytest.mark.xfail
+        def test_forbidden_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_forbidden_response()
+
+        @pytest.mark.xfail
+        def test_not_found_link_response_code(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            links_page.check_link_not_found_response()
 

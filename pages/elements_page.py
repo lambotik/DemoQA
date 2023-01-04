@@ -469,11 +469,56 @@ class LinksPage(BasePage):
 
     # Getters
 
+    def get_created_link(self):
+        return self.element_is_visible(self.locators.CREATED_LINK)
+
     def get_bad_request(self):
-        bad_request = self.element_is_visible(self.locators.BAD_REQUEST_LINK)
-        return bad_request
+        return self.element_is_visible(self.locators.BAD_REQUEST_LINK)
+
+    def get_no_content_link(self):
+        return self.element_is_visible(self.locators.NO_CONTENT_LINK)
+
+    def get_moved_link(self):
+        return self.element_is_visible(self.locators.MOVED_LINK)
+
+    def get_unauthorized_link(self):
+        return self.element_is_visible(self.locators.UNAUTHORIZED_LINK)
+
+    def get_forbidden_link(self):
+        return self.element_is_visible(self.locators.FORBIDDEN_LINK)
+
+    def get_not_found_link(self):
+        return self.element_is_visible(self.locators.NOT_FOUND_LINK)
 
     # Actions
+
+    def click_created_link(self):
+        print('Click created link')
+        self.get_created_link().click()
+
+    def click_bad_request(self):
+        print('Click bad request link')
+        self.get_bad_request().click()
+
+    def click_no_content_link(self):
+        print('Click no content link')
+        self.get_no_content_link().click()
+
+    def click_moved_link(self):
+        print('Click moved link')
+        self.get_moved_link().click()
+
+    def click_unauthorized_link(self):
+        print('Click unauthorized link')
+        self.get_unauthorized_link().click()
+
+    def click_forbidden_link(self):
+        print('Click forbidden link')
+        self.get_forbidden_link().click()
+
+    def click_not_found_link(self):
+        print('Click not found link')
+        self.get_not_found_link().click()
 
     def link_response_code_200(self):
         home_link = self.element_is_present(self.locators.HOME_LINK)
@@ -500,9 +545,11 @@ class LinksPage(BasePage):
         href_link, current_link, status_code = self.link_response_code_200()
         assert href_link == current_link, f'Bad link url {status_code}'
 
-    def assert_response_code_200(self, status_code):
-        print('Assertion, status code 200')
-        assert status_code == 200, f'Status code is {status_code}'
+    def assert_response_code(self, status_code):
+        link_response_code = self.element_is_present(self.locators.LINK_RESPONSE_CODE).text
+        print(f'Result status code: {link_response_code}')
+        print('Assertion, link status code, and result')
+        assert status_code == link_response_code, f'Status code is {status_code}'
 
     """"Добавляет к пути основной ссылки отправляемый запрос и возвращает статус код,
      в скобках нужно вставить локатор"""
@@ -531,43 +578,49 @@ class LinksPage(BasePage):
     def check_link_bad_response(self):
         Logger.add_start_step(method='check_bad_request')
         response = self.get_link_and_check_code_status(self.locators.BAD_REQUEST_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_bad_request()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_bad_request')
 
     def check_link_created_response(self):
         Logger.add_start_step(method='check_link_created_request')
         response = self.get_link_and_check_code_status(self.locators.CREATED_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_created_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_created_request')
 
     def check_link_no_content_response(self):
         Logger.add_start_step(method='check_link_no_content_response')
         response = self.get_link_and_check_code_status(self.locators.NO_CONTENT_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_no_content_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_no_content_response')
 
     def check_link_moved_response(self):
         Logger.add_start_step(method='check_link_moved_response')
         response = self.get_link_and_check_code_status(self.locators.MOVED_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_moved_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_moved_response')
 
     def check_link_unauthorized_response(self):
         Logger.add_start_step(method='check_link_unauthorized_response')
         response = self.get_link_and_check_code_status(self.locators.UNAUTHORIZED_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_unauthorized_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_unauthorized_response')
 
     def check_link_forbidden_response(self):
         Logger.add_start_step(method='check_link_forbidden_response')
         response = self.get_link_and_check_code_status(self.locators.FORBIDDEN_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.click_forbidden_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_forbidden_response')
 
     def check_link_not_found_response(self):
         Logger.add_start_step(method='check_link_not_found_response')
         response = self.get_link_and_check_code_status(self.locators.NOT_FOUND_LINK)
-        self.assert_response_code_200(f'{response}')
+        self.go_to_element(self.element_is_present(self.locators.NOT_FOUND_LINK))
+        self.click_not_found_link()
+        self.assert_response_code(f'{response}')
         Logger.add_end_step(url=self.driver.current_url, method='check_link_not_found_response')
-
-

@@ -75,6 +75,7 @@ class LinksPageLocators:
     UNAUTHORIZED_LINK = (By.XPATH, '//a[@id="unauthorized"]')
     FORBIDDEN_LINK = (By.XPATH, '//a[@id="forbidden"]')
     NOT_FOUND_LINK = (By.XPATH, '//a[@id="invalid-url"]')
+    LINK_RESPONSE_CODE = (By.XPATH, '//*[@id="linkResponse"]/b[1]')
 
 
 

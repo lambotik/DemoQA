@@ -65,43 +65,37 @@ class TestElements:
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_response_code_200()
-        @pytest.mark.xfail
+
         def test_bad_request_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_bad_response()
 
-        @pytest.mark.xfail
         def test_created_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_created_response()
 
-        @pytest.mark.xfail
         def test_no_content_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_no_content_response()
 
-        @pytest.mark.xfail
         def test_moved_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_moved_response()
 
-        @pytest.mark.xfail
         def test_unauthorized_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_unauthorized_response()
 
-        @pytest.mark.xfail
         def test_forbidden_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             links_page.check_link_forbidden_response()
 
-        @pytest.mark.xfail
         def test_not_found_link_response_code(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()

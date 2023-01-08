@@ -1,6 +1,14 @@
+import time
+
 import pytest
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage
+from pages.button_page import ButtonPage
+from pages.check_box_page import CheckBoxPage
+from pages.links_page import LinksPage
+from pages.radio_button_page import RadioButtonPage
+from pages.text_box_page import TextBoxPage
+from pages.upload_and_download_page import UploadAndDownloadPage
+from pages.web_table_page import WebTablePage
 
 
 class TestElements:
@@ -101,3 +109,15 @@ class TestElements:
             links_page.open()
             links_page.check_link_not_found_response()
 
+
+class TestUploadAndDownload:
+    def test_file_upload_check(self, driver):
+        upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_and_download_page.open()
+        file_name, result = upload_and_download_page.upload_file()
+        assert file_name == result, 'The name of the uploaded file does not match the result'
+
+    def test_download_file_check(self, driver):
+        upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_and_download_page.open()
+        upload_and_download_page.download_file_check()

@@ -78,5 +78,8 @@ class LinksPageLocators:
     LINK_RESPONSE_CODE = (By.XPATH, '//*[@id="linkResponse"]/b[1]')
 
 
-
+class UploadAndDownloadPageLocators:
+    DOWNLOAD_BUTTON = (By.XPATH, '//a[@id="downloadButton"]')
+    UPLOAD_BUTTON = (By.XPATH, '//input[@id="uploadFile"]')
+    RESULT_UPLOADED_BUTTON = (By.XPATH, '//p[@id="uploadedFilePath"]')
 

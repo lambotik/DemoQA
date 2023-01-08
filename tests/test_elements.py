@@ -1,6 +1,11 @@
 import pytest
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage
+from pages.button_page import ButtonPage
+from pages.check_box_page import CheckBoxPage
+from pages.links_page import LinksPage
+from pages.radio_button_page import RadioButtonPage
+from pages.text_box_page import TextBoxPage
+from pages.web_table_page import WebTablePage
 
 
 class TestElements:
@@ -101,3 +106,5 @@ class TestElements:
             links_page.open()
             links_page.check_link_not_found_response()
 
+# class TestUploadAndDownload:
+#     def

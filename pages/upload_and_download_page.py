@@ -5,10 +5,13 @@ import random
 from generator.generator import generated_file
 from locators.elements_page_locators import UploadAndDownloadPageLocators
 from pages.base_page import BasePage
+from utilities.logger import Logger
 
 
 class UploadAndDownloadPage(BasePage):
     locators = UploadAndDownloadPageLocators()
+
+    # Actions
 
     def upload_file(self):
         file_name, path = generated_file()
@@ -43,12 +46,21 @@ class UploadAndDownloadPage(BasePage):
             f.write(link_b[offset:])
             # проверяем что path_name_file есть в пути, получаем True
             check_file = os.path.exists(path_name_file)
-            print(f'Checking that the file <{file_name}> is loaded')
+            print(f'Checking that the downloaded file <{file_name}> in the {path_name_file}')
             f.close()
         os.remove(path_name_file)
         print(f'Remove {file_name}')
         return check_file
 
+    # Methods
 
+    def file_upload_check(self):
+        Logger.add_start_step(method='file_upload_check')
+        self.upload_file()
+        Logger.add_end_step(url=self.driver.current_url, method='file_upload_check')
 
-
+    def download_file_check(self):
+        Logger.add_start_step(method='download_file_check')
+        check = self.download_file()
+        assert check is True, 'The file has not been downloaded'
+        Logger.add_end_step(url=self.driver.current_url, method='download_file_check')

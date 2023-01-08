@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from pages.button_page import ButtonPage
@@ -109,15 +111,13 @@ class TestElements:
 
 
 class TestUploadAndDownload:
-    def test_upload_file(self, driver):
+    def test_file_upload_check(self, driver):
         upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
         upload_and_download_page.open()
         file_name, result = upload_and_download_page.upload_file()
         assert file_name == result, 'The name of the uploaded file does not match the result'
 
-    def test_download_file(self, driver):
+    def test_download_file_check(self, driver):
         upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
         upload_and_download_page.open()
-        upload_and_download_page.download_file()
-        check = upload_and_download_page.download_file()
-        assert check == True, 'The file has not been downloaded'
+        upload_and_download_page.download_file_check()

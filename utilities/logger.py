@@ -2,10 +2,7 @@ import datetime
 import os
 
 
-from pages.base_page import BasePage
-
-
-class Logger():
+class Logger:
     file_path = r'C:\Users\Дима\PycharmProjects\DemoQA\logs\log_date_'
     file_name = file_path + str(datetime.datetime.now().strftime("%d-%m-%Y_%H-%M-%S") + '.logs')
 

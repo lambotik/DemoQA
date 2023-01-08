@@ -5,6 +5,7 @@ from pages.check_box_page import CheckBoxPage
 from pages.links_page import LinksPage
 from pages.radio_button_page import RadioButtonPage
 from pages.text_box_page import TextBoxPage
+from pages.upload_and_download_page import UploadAndDownloadPage
 from pages.web_table_page import WebTablePage
 
 
@@ -106,5 +107,17 @@ class TestElements:
             links_page.open()
             links_page.check_link_not_found_response()
 
-# class TestUploadAndDownload:
-#     def
+
+class TestUploadAndDownload:
+    def test_upload_file(self, driver):
+        upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_and_download_page.open()
+        file_name, result = upload_and_download_page.upload_file()
+        assert file_name == result, 'The name of the uploaded file does not match the result'
+
+    def test_download_file(self, driver):
+        upload_and_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_and_download_page.open()
+        upload_and_download_page.download_file()
+        check = upload_and_download_page.download_file()
+        assert check == True, 'The file has not been downloaded'

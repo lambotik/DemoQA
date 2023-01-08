@@ -21,3 +21,12 @@ def generated_person():
         salary=random.randint(1000, 2000),
         department=faker_ru.job()
     )
+
+
+def generated_file():
+    path = rf'C:\Users\Дима\PycharmProjects\DemoQA\Filetest{random.randint(0, 999)}.txt'
+    file = open(path, 'w+')
+    file.write(f'Hellow World {random.randint(0, 999)}')
+    file.close()
+    print('Generated file filetest with random index in range 0-999')
+    return file.name, path

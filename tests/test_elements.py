@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from pages.button_page import ButtonPage
@@ -124,7 +126,7 @@ class TestUploadAndDownload:
 
 class TestDynamicPropertiesPage:
 
-    def test_dynamic_properties(self, driver):
+    def test_dynamic_properties_change_color(self, driver):
         dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
         dynamic_properties_page.open()
         color_before, color_after = dynamic_properties_page.check_changed_of_color()

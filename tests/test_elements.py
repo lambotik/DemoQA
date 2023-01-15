@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from pages.button_page import ButtonPage

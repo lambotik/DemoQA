@@ -13,3 +13,6 @@ class Person:
     age: int = None
     salary: int = None
     department: str = None
+
+    subject: str = None
+    phone: str = None

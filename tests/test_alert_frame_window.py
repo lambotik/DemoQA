@@ -1,4 +1,5 @@
-from pages.alerts_frame_windows_page import AlertFrameWindowsPage, AlertsPage, FramePage, NestedFramePage
+from pages.alerts_frame_windows_page import AlertFrameWindowsPage, AlertsPage, FramePage, NestedFramePage, \
+    ModalDialogPage
 
 
 class TestAlertFrameWindowsPage:
@@ -58,3 +59,8 @@ class TestAlertFrameWindowsPage:
             parent_frame, child_frame = nested_frame_page.check_nested_frame()
             assert parent_frame == 'Parent frame', 'Parent frame has not been present'
             assert child_frame == 'Child Iframe', 'Child frame has not been present'
+
+    class TestModalDialogPage:
+        def test_small_modal(self, driver):
+            modal_dialog_page = ModalDialogPage(driver, 'https://demoqa.com/modal-dialogs')
+            modal_dialog_page.open()

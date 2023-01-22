@@ -64,3 +64,6 @@ class BasePage:
 
     def got_to_a_new_tab(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
+
+    def got_to_alert(self):
+        return self.driver.switch_to.alert

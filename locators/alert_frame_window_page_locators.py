@@ -16,3 +16,9 @@ class AlertsPageLocators:
     RESULT_CONFIRM_ALERT = (By.XPATH, '//span[@id="confirmResult"]')
     LOGIN_ALERT_BUTTON = (By.XPATH, '//button[@id="promtButton"]')
     PROMT_ALERT_RESULT = (By.XPATH, '//span[@id="promptResult"]')
+
+
+class FramePageLocators:
+    BIG_FRAME = (By.XPATH, '//iframe[@id="frame1"]')
+    SMALL_FRAME = (By.XPATH, '//iframe[@id="frame2"]')
+    TITLE_FRAME = (By.XPATH, '//h1[@id="sampleHeading"]')

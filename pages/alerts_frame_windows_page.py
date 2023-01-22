@@ -2,7 +2,7 @@ import time
 
 from generator.generator import generated_person
 from locators.alert_frame_window_page_locators import AlertFrameWindowsPageLocators, AlertsPageLocators, \
-    FramePageLocators
+    FramePageLocators, NestedFramePageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -85,23 +85,44 @@ class FramePage(BasePage):
     locators = FramePageLocators()
 
     def check_frame_size(self, frame_num):
+        Logger.add_start_step(method='check_frame_size')
         if frame_num == 'frame1':
             frame = self.element_is_present(self.locators.BIG_FRAME)
             width = frame.get_attribute('width')
             height = frame.get_attribute('height')
             print('Frame 1 width:', width, '\n''Frame 1 height:', height)
-            self.got_to_frame(frame)
+            self.go_to_frame(frame)
             text = self.element_is_visible(self.locators.TITLE_FRAME).text
             print(f'Frame 1 text: {text}')
             self.switch_to_default_content()
+            Logger.add_end_step(url=self.driver.current_url, method='check_frame_size')
             return [text, width, height]
+        Logger.add_start_step(method='check_frame_size')
         if frame_num == 'frame2':
             frame = self.element_is_present(self.locators.SMALL_FRAME)
             width = frame.get_attribute('width')
             height = frame.get_attribute('height')
             print('Frame 2 width:', width, '\n''Frame 2 height:', height)
-            self.got_to_frame(frame)
+            self.go_to_frame(frame)
             text = self.element_is_visible(self.locators.TITLE_FRAME).text
             print(f'Frame 2 text: {text}')
             self.switch_to_default_content()
+            Logger.add_end_step(url=self.driver.current_url, method='check_frame_size')
             return [text, width, height]
+
+
+class NestedFramePage(BasePage):
+    locators = NestedFramePageLocators()
+
+    def check_nested_frame(self):
+        Logger.add_start_step(method='check_nested_frame')
+        parent_frame = self.element_is_present(self.locators.PARENT_FRAME)
+        self.go_to_frame(parent_frame)
+        parent_text = self.element_is_present(self.locators.PARENT_TEXT).text
+        print(f'Parent frame text: {parent_text}')
+        child_frame = self.element_is_present(self.locators.CHILD_FRAME)
+        self.go_to_frame(child_frame)
+        child_text = self.element_is_present(self.locators.CHILD_TEXT).text
+        print(f'Child frame text: {child_text}')
+        Logger.add_end_step(url=self.driver.current_url, method='check_nested_frame')
+        return parent_text, child_text

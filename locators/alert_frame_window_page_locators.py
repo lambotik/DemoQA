@@ -29,3 +29,10 @@ class NestedFramePageLocators:
     PARENT_TEXT = (By.CSS_SELECTOR, 'body')
     CHILD_FRAME = (By.XPATH, '//iframe[@srcdoc="<p>Child Iframe</p>"]')
     CHILD_TEXT = (By.CSS_SELECTOR, 'p')
+
+
+class ModalDialogPageLocators:
+    PARENT_FRAME = (By.XPATH, '//iframe[@id="frame1"]')
+    SMALL_MODAL = (By.XPATH, "//button[@id='closeSmallModal']")
+    SMALL_MODAL_TEXT = (By.XPATH, "//div[@class='modal-body']")
+    CLOSE_SMALL_MODAL = (By.XPATH, "//button[@id='closeSmallModal']")

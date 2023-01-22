@@ -2,7 +2,7 @@ import time
 
 from generator.generator import generated_person
 from locators.alert_frame_window_page_locators import AlertFrameWindowsPageLocators, AlertsPageLocators, \
-    FramePageLocators, NestedFramePageLocators
+    FramePageLocators, NestedFramePageLocators, ModalDialogPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -126,3 +126,9 @@ class NestedFramePage(BasePage):
         print(f'Child frame text: {child_text}')
         Logger.add_end_step(url=self.driver.current_url, method='check_nested_frame')
         return parent_text, child_text
+
+
+class ModalDialogPage(BasePage):
+    locators = ModalDialogPageLocators()
+
+

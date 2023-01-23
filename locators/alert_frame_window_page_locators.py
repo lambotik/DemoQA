@@ -32,7 +32,11 @@ class NestedFramePageLocators:
 
 
 class ModalDialogPageLocators:
-    PARENT_FRAME = (By.XPATH, '//iframe[@id="frame1"]')
-    SMALL_MODAL = (By.XPATH, "//button[@id='closeSmallModal']")
+    SMALL_MODAL = (By.XPATH, "//button[@id='showSmallModal']")
+    SMALL_MODAL_TITLE = (By.XPATH, '//div[@id="example-modal-sizes-title-sm"]')
     SMALL_MODAL_TEXT = (By.XPATH, "//div[@class='modal-body']")
     CLOSE_SMALL_MODAL = (By.XPATH, "//button[@id='closeSmallModal']")
+    LARGE_MODAL = (By.XPATH, "//button[@id='showLargeModal']")
+    LARGE_MODAL_TITLE = (By.XPATH, '//div[@id="example-modal-sizes-title-lg"]')
+    LARGE_MODAL_TEXT = (By.XPATH, "//div[@class='modal-body']")
+    CLOSE_LARGE_MODAL = (By.XPATH, "//button[@id='closeLargeModal']")

@@ -10,4 +10,6 @@
 -  Broken
 -  Links
 -  Upload and Download
--  Dynamic Properties.
+-  Dynamic Properties
+### In the 'Forms' section, you will be shown interacting with:
+- Registration Form

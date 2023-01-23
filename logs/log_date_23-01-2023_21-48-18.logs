@@ -1,0 +1,348 @@
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestAlertFrameWindowsPage::test_new_tab (call)
+Start time: 2023-01-23 21:49:01.843643
+Start name method: check_new_tab_page
+
+End time: 2023-01-23 21:49:02.190635
+End name method: check_new_tab_page
+URL: https://demoqa.com/sample
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestAlertFrameWindowsPage::test_new_window_page (call)
+Start time: 2023-01-23 21:49:45.088604
+Start name method: check_new_window_page
+
+End time: 2023-01-23 21:49:45.718330
+End name method: check_new_window_page
+URL: https://demoqa.com/sample
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestAlertPage::test_check_confirm_alert (call)
+Start time: 2023-01-23 21:51:40.283158
+Start name method: check_confirm_alert
+
+End time: 2023-01-23 21:51:40.423154
+End name method: check_confirm_alert
+URL: https://demoqa.com/alerts
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestAlertPage::test_check_promt_alert_result (call)
+Start time: 2023-01-23 21:52:15.106544
+Start name method: check_promt_alert_result
+
+End time: 2023-01-23 21:52:15.416540
+End name method: check_promt_alert_result
+URL: https://demoqa.com/alerts
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestFramesPage::test_frame_size (call)
+Start time: 2023-01-23 21:52:49.681574
+Start name method: check_frame_size
+
+End time: 2023-01-23 21:52:49.806570
+End name method: check_frame_size
+URL: https://demoqa.com/frames
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestFramesPage::test_frame_size (call)
+Start time: 2023-01-23 21:52:49.807572
+Start name method: check_frame_size
+
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestFramesPage::test_frame_size (call)
+Start time: 2023-01-23 21:52:49.807572
+Start name method: check_frame_size
+
+End time: 2023-01-23 21:52:49.930183
+End name method: check_frame_size
+URL: https://demoqa.com/frames
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestNestedFramesPage::test_nested_frame (call)
+Start time: 2023-01-23 21:53:33.357868
+Start name method: check_nested_frame
+
+End time: 2023-01-23 21:53:33.478385
+End name method: check_nested_frame
+URL: https://demoqa.com/nestedframes
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestModalDialogPage::test_small_modal_window_text (call)
+Start time: 2023-01-23 21:54:19.328032
+Start name method: check_the_text_of_the_small_modal_window
+
+End time: 2023-01-23 21:54:20.101658
+End name method: check_the_text_of_the_small_modal_window
+URL: https://demoqa.com/modal-dialogs
+
+-----
+
+-----
+Test: test_alert_frame_window.py::TestAlertFrameWindowsPage::TestModalDialogPage::test_large_modal_window_text (call)
+Start time: 2023-01-23 21:54:58.638255
+Start name method: check_the_text_of_the_large_modal_window
+
+End time: 2023-01-23 21:54:59.042477
+End name method: check_the_text_of_the_large_modal_window
+URL: https://demoqa.com/modal-dialogs
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestTextBox::test_fill_all_fields_and_check_output_in_table (call)
+Start time: 2023-01-23 21:55:26.271738
+Start name method: assert_fill_all_fields_and_check_output_in_table
+
+End time: 2023-01-23 21:55:27.073316
+End name method: assert_fill_all_fields_and_check_output_in_table
+URL: https://demoqa.com/text-box
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestCheckBox::test_check_box (call)
+Start time: 2023-01-23 21:56:11.000418
+Start name method: check_box
+
+End time: 2023-01-23 21:56:13.975790
+End name method: check_box
+URL: https://demoqa.com/checkbox
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestRadioButton::test_radio_button (call)
+Start time: 2023-01-23 21:56:41.275179
+Start name method: radio_button
+
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_add_new_person_and_check_this (call)
+Start time: 2023-01-23 21:57:14.678494
+Start name method: web_table_add_new_person_and_check_this
+
+End time: 2023-01-23 21:57:16.127893
+End name method: web_table_add_new_person_and_check_this
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_search_added_person (call)
+Start time: 2023-01-23 21:57:44.819430
+Start name method: web_table_search_added_person
+
+End time: 2023-01-23 21:57:46.699355
+End name method: web_table_search_added_person
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_web_table_update_person_info (call)
+Start time: 2023-01-23 21:58:20.487117
+Start name method: web_table_update_person_info
+
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_remove_person_from_web_table_and_check_this (call)
+Start time: 2023-01-23 21:58:42.550020
+Start name method: remove_person_from_web_table_and_check_this
+
+End time: 2023-01-23 21:58:44.346398
+End name method: remove_person_from_web_table_and_check_this
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestWebTable::test_change_the_number_of_rows_and_count_them (call)
+Start time: 2023-01-23 21:59:20.954395
+Start name method: change_the_number_of_rows_and_count_them
+
+End time: 2023-01-23 21:59:22.073886
+End name method: change_the_number_of_rows_and_count_them
+URL: https://demoqa.com/webtables
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestButton::test_different_click_on_the_buttons (call)
+Start time: 2023-01-23 22:00:03.111660
+Start name method: different_click_on_the_buttons
+
+End time: 2023-01-23 22:00:05.135514
+End name method: different_click_on_the_buttons
+URL: https://demoqa.com/buttons
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_home_link_response_code_200 (call)
+Start time: 2023-01-23 22:00:29.945231
+Start name method: check_link_response_code_200
+
+End time: 2023-01-23 22:00:38.704025
+End name method: check_link_response_code_200
+URL: https://demoqa.com/
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_bad_request_link_response_code (call)
+Start time: 2023-01-23 22:00:56.140004
+Start name method: check_bad_request
+
+End time: 2023-01-23 22:00:58.107395
+End name method: check_bad_request
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_created_link_response_code (call)
+Start time: 2023-01-23 22:01:25.509318
+Start name method: check_link_created_request
+
+End time: 2023-01-23 22:01:26.627012
+End name method: check_link_created_request
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_no_content_link_response_code (call)
+Start time: 2023-01-23 22:01:46.530364
+Start name method: check_link_no_content_response
+
+End time: 2023-01-23 22:01:49.432665
+End name method: check_link_no_content_response
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_moved_link_response_code (call)
+Start time: 2023-01-23 22:02:08.599179
+Start name method: check_link_moved_response
+
+End time: 2023-01-23 22:02:10.028147
+End name method: check_link_moved_response
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_unauthorized_link_response_code (call)
+Start time: 2023-01-23 22:02:37.548109
+Start name method: check_link_unauthorized_response
+
+End time: 2023-01-23 22:02:38.595107
+End name method: check_link_unauthorized_response
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_forbidden_link_response_code (call)
+Start time: 2023-01-23 22:03:08.350293
+Start name method: check_link_forbidden_response
+
+End time: 2023-01-23 22:03:09.697068
+End name method: check_link_forbidden_response
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestElements::TestLinks::test_not_found_link_response_code (call)
+Start time: 2023-01-23 22:03:48.395465
+Start name method: check_link_not_found_response
+
+End time: 2023-01-23 22:03:49.362567
+End name method: check_link_not_found_response
+URL: https://demoqa.com/links
+
+-----
+
+-----
+Test: test_elements.py::TestUploadAndDownload::test_download_file_check (call)
+Start time: 2023-01-23 22:04:49.748302
+Start name method: download_file_check
+
+End time: 2023-01-23 22:04:49.784507
+End name method: download_file_check
+URL: https://demoqa.com/upload-download
+
+-----
+
+-----
+Test: test_elements.py::TestDynamicPropertiesPage::test_dynamic_properties_change_color (call)
+Start time: 2023-01-23 22:05:28.256028
+Start name method: check_changed_of_color
+
+End time: 2023-01-23 22:05:33.306305
+End name method: check_changed_of_color
+URL: https://demoqa.com/dynamic-properties
+
+-----
+
+-----
+Test: test_elements.py::TestDynamicPropertiesPage::test_appear_button (call)
+Start time: 2023-01-23 22:05:55.546263
+Start name method: check_appear_button
+
+End time: 2023-01-23 22:05:58.115889
+End name method: check_appear_button
+URL: https://demoqa.com/dynamic-properties
+
+-----
+
+-----
+Test: test_elements.py::TestDynamicPropertiesPage::test_enable_button (call)
+Start time: 2023-01-23 22:06:35.055664
+Start name method: check_enable_button
+
+End time: 2023-01-23 22:06:38.362695
+End name method: check_enable_button
+URL: https://demoqa.com/dynamic-properties
+
+-----
+
+-----
+Test: test_forms.py::TestFormsPage::TestForms::test_form_input_and_output_data (call)
+Start time: 2023-01-23 22:07:08.214175
+Start name method: fill_all_fields
+
+End time: 2023-01-23 22:07:10.851059
+End name method: fill_all_fields
+URL: https://demoqa.com/automation-practice-form
+
+-----
+
+-----
+Test: test_forms.py::TestFormsPage::TestForms::test_form_input_and_output_data (call)
+Start time: 2023-01-23 22:07:10.851059
+Start name method: form_result
+
+End time: 2023-01-23 22:07:11.160065
+End name method: form_result
+URL: https://demoqa.com/automation-practice-form
+
+-----

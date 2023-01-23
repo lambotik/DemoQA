@@ -61,6 +61,16 @@ class TestAlertFrameWindowsPage:
             assert child_frame == 'Child Iframe', 'Child frame has not been present'
 
     class TestModalDialogPage:
-        def test_small_modal(self, driver):
+        def test_small_modal_window_text(self, driver):
             modal_dialog_page = ModalDialogPage(driver, 'https://demoqa.com/modal-dialogs')
             modal_dialog_page.open()
+            modal_title, modal_text = modal_dialog_page.check_the_text_of_the_small_modal_window()
+            assert modal_title == 'Small Modal', 'Invalid title text'
+            assert modal_text == 'This is a small modal. It has very less content', 'Invalid modal window text'
+
+        def test_large_modal_window_text(self, driver):
+            modal_dialog_page = ModalDialogPage(driver, 'https://demoqa.com/modal-dialogs')
+            modal_dialog_page.open()
+            modal_title, modal_text = modal_dialog_page.check_the_text_of_the_large_modal_window()
+            assert modal_title == 'Large Modal', 'Invalid title text'
+            assert modal_text == 574, 'Incorrect text length'

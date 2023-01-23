@@ -131,4 +131,26 @@ class NestedFramePage(BasePage):
 class ModalDialogPage(BasePage):
     locators = ModalDialogPageLocators()
 
+    def check_the_text_of_the_small_modal_window(self):
+        Logger.add_start_step(method='check_the_text_of_the_small_modal_window')
+        self.element_is_visible(self.locators.SMALL_MODAL).click()
+        print('Click Small Modal')
+        modal_title = self.element_is_visible(self.locators.SMALL_MODAL_TITLE).text
+        modal_text = self.element_is_visible(self.locators.SMALL_MODAL_TEXT).text
+        print(f'Modal Title: {modal_title}\nModal Text: {modal_text}')
+        self.element_is_visible(self.locators.CLOSE_SMALL_MODAL).click()
+        print('Click Close Modal')
+        Logger.add_end_step(url=self.driver.current_url, method='check_the_text_of_the_small_modal_window')
+        return modal_title, modal_text
 
+    def check_the_text_of_the_large_modal_window(self):
+        Logger.add_start_step(method='check_the_text_of_the_large_modal_window')
+        self.element_is_visible(self.locators.LARGE_MODAL).click()
+        print('Click Large Modal')
+        modal_title = self.element_is_visible(self.locators.LARGE_MODAL_TITLE).text
+        modal_text = self.element_is_visible(self.locators.LARGE_MODAL_TEXT).text
+        self.element_is_visible(self.locators.CLOSE_LARGE_MODAL).click()
+        print(f'Modal Title: {modal_title}\nModal Text Length: {len(modal_text)}')
+        print('Click Close Modal')
+        Logger.add_end_step(url=self.driver.current_url, method='check_the_text_of_the_large_modal_window')
+        return modal_title, len(modal_text)

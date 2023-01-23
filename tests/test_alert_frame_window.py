@@ -1,4 +1,5 @@
-from pages.alerts_frame_windows_page import AlertFrameWindowsPage, AlertsPage, FramePage, NestedFramePage, \
+from pages.Alerts_Frame_Windows.alerts_frame_windows_page import AlertFrameWindowsPage, AlertsPage, FramePage, \
+    NestedFramePage, \
     ModalDialogPage
 
 

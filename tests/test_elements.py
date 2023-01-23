@@ -1,15 +1,13 @@
-import time
-
 import pytest
 
-from pages.button_page import ButtonPage
-from pages.check_box_page import CheckBoxPage
-from pages.dynamic_properties_page import DynamicPropertiesPage
-from pages.links_page import LinksPage
-from pages.radio_button_page import RadioButtonPage
-from pages.text_box_page import TextBoxPage
-from pages.upload_and_download_page import UploadAndDownloadPage
-from pages.web_table_page import WebTablePage
+from pages.Elements.button_page import ButtonPage
+from pages.Elements.check_box_page import CheckBoxPage
+from pages.Elements.dynamic_properties_page import DynamicPropertiesPage
+from pages.Elements.links_page import LinksPage
+from pages.Elements.radio_button_page import RadioButtonPage
+from pages.Elements.text_box_page import TextBoxPage
+from pages.Elements.upload_and_download_page import UploadAndDownloadPage
+from pages.Elements.web_table_page import WebTablePage
 
 
 class TestElements:

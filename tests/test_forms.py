@@ -1,4 +1,4 @@
-from pages.forms_page import FormsPage
+from pages.Forms.forms_page import FormsPage
 
 
 class TestFormsPage:

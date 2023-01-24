@@ -22,7 +22,9 @@
 #
 #
 # print(a)
-import random
+# import random
+#
+# phone = random.randint(1000000000, 9999999999)
+# print(phone)
 
-phone = random.randint(1000000000, 9999999999)
-print(phone)
+print('(36/3*(8-6))/6)=', int((36/3*(8-6))/6))

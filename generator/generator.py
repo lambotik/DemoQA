@@ -2,7 +2,7 @@ import random
 
 from faker import Faker
 
-from data.data import Person
+from data.data import Person, Color
 
 faker_ru = Faker('ru_RU')
 Faker.seed()
@@ -22,6 +22,7 @@ def generated_person():
         department=faker_ru.job(),
         subject=faker_ru.job(),
         # phone=faker_ru.msisdn()
+        # color=faker_ru.color()  # example: #d4a0f7
     )
 
 
@@ -44,3 +45,9 @@ def generated_subject():
     sub = subjects[random.randint(0, len(subjects) - 1)]
     print(f'Subject: {sub}')
     return f'{sub}'
+
+
+def generated_color():
+    yield Color(
+        color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta",
+                    "Aqua"])

@@ -16,3 +16,8 @@ class Person:
 
     subject: str = None
     phone: str = None
+
+
+@dataclass
+class Color:
+    color_name: list = None

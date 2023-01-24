@@ -52,7 +52,7 @@ class AutoCompletePage(BasePage):
             input_multi.send_keys(Keys.ENTER)
         print(f'Selected colors: {colors}')
         Logger.add_end_step(url=self.driver.current_url, method='fill_input_multi')
-        return f'{colors}'
+        return colors
 
     def remove_value_from_multi(self):
         Logger.add_start_step(method='remove_value_from_multi')

@@ -1,3 +1,5 @@
+import random
+
 from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as wait
@@ -74,3 +76,10 @@ class BasePage:
 
     def switch_to_default_content(self):
         self.driver.switch_to.default_content()
+
+    def random_choice_from_elements_list(self, elements_list_locator):
+        empty_list = []
+        full_list = self.elements_are_present(elements_list_locator)
+        for t in full_list:
+            empty_list.append(t.text)
+        return random.choice(full_list)

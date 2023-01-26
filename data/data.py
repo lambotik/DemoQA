@@ -29,3 +29,7 @@ class Date:
     month: str = None
     year: str = None
     time: str = None
+
+@dataclass
+class Time:
+    time_15: list = None

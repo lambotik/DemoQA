@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date, generated_time_through_15_minutes
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -194,3 +194,48 @@ class ProgressBarPage(BasePage):
         print('Value after stop: ', value_after_stop)
         Logger.add_end_step(url=self.driver.current_url, method='check_progress_bar_value')
         return value_before_start, value_after_stop
+
+
+class TabsPage(BasePage):
+    locators = TabsPageLocators()
+
+    def check_title(self, name_tab):
+        title = self.element_is_visible(name_tab)
+        return title.text
+
+    def get_len_text(self):
+        len_text = len(self.element_is_visible(self.locators.TAB_CONTENT).text)
+        return len_text
+
+    def check_what_tab(self):
+        title = self.check_title(self.locators.TAB_WHAT)
+        self.element_is_visible(self.locators.TAB_WHAT).click()
+        len_text = self.get_len_text()
+        print(f'Title name is: {title}')
+        print(f'Length text is: {len_text}')
+        return title, len_text
+
+    def check_origin_tab(self):
+        title = self.check_title(self.locators.TAB_ORIGIN)
+        self.element_is_visible(self.locators.TAB_ORIGIN).click()
+        len_text = self.get_len_text()
+        print(f'Title name is: {title}')
+        print(f'Length text is: {len_text}')
+        return title, len_text
+
+    def check_use_tab(self):
+        title = self.check_title(self.locators.TAB_USE)
+        self.element_is_visible(self.locators.TAB_USE).click()
+        len_text = self.get_len_text()
+        print(f'Title name is: {title}')
+        print(f'Length text is: {len_text}')
+        return title, len_text
+
+    def check_more_tab(self):
+        title = self.check_title(self.locators.TAB_MORE)
+        self.element_is_visible(self.locators.TAB_MORE).click()
+        len_text = self.get_len_text()
+        print(f'Title name is: {title}')
+        print(f'Length text is: {len_text}')
+        return title, len_text
+

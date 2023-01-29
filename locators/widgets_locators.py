@@ -43,3 +43,14 @@ class SliderPageLocators:
 class ProgressBarPageLocators:
     START_AND_STOP_BUTTON = (By.XPATH, '//button[@id="startStopButton"]')
     PROGRESS_BAR = (By.XPATH, '//div[@id="progressBar"]')
+
+
+class TabsPageLocators:
+    TAB_WHAT = (By.XPATH, '//a[@id="demo-tab-what"]')
+    TAB_WHAT_CONTENT = (By.XPATH, '//div[@id="demo-tabpane-what"]')
+    TAB_ORIGIN = (By.XPATH, '//a[@id="demo-tab-origin"]')
+    TAB_ORIGIN_CONTENT = (By.XPATH, '//div[@id="demo-tabpane-origin"]')
+    TAB_USE = (By.XPATH, '//a[@id="demo-tab-use"]')
+    TAB_USE_CONTENT = (By.XPATH, '//div[@id="demo-tabpane-use"]')
+    TAB_MORE = (By.XPATH, '//a[@id="demo-tab-more"]')
+    TAB_CONTENT = (By.XPATH, '//div[@class="tab-content"]')

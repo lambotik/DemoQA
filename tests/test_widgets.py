@@ -1,4 +1,7 @@
-from pages.Widgets.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
+import pytest
+
+from pages.Widgets.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, \
+    TabsPage
 
 
 class TestWidgetsPage:
@@ -71,3 +74,35 @@ class TestWidgetsPage:
             progress_bar_page.open()
             value_before, value_after = progress_bar_page.check_progress_bar_value()
             assert value_before != value_after, 'The value progress bar has not been change'
+
+    class TestTabs:
+
+        def test_check_what_tab(self, driver):
+            tabs_page = TabsPage(driver, 'https://demoqa.com/tabs')
+            tabs_page.open()
+            tab_title, length_text = tabs_page.check_what_tab()
+            assert tab_title == 'What', 'Title does not match'
+            assert length_text > 0, 'Text is missing'
+
+        def test_check_origin_tab(self, driver):
+            tabs_page = TabsPage(driver, 'https://demoqa.com/tabs')
+            tabs_page.open()
+            tab_title, length_text = tabs_page.check_origin_tab()
+            assert tab_title == 'Origin', 'Title does not match'
+            assert length_text > 0, 'Text is missing'
+
+        def test_check_use_tab(self, driver):
+            tabs_page = TabsPage(driver, 'https://demoqa.com/tabs')
+            tabs_page.open()
+            tab_title, length_text = tabs_page.check_use_tab()
+            assert tab_title == 'Use', 'Title does not match'
+            assert length_text > 0, 'Text is missing'
+
+        @pytest.mark.xfail
+        def test_check_more_tab(self, driver):
+            tabs_page = TabsPage(driver, 'https://demoqa.com/tabs')
+            tabs_page.open()
+            tab_title, length_text = tabs_page.check_more_tab()
+            assert tab_title == 'More', 'Title does not match'
+            assert length_text > 0, 'Text is missing'
+

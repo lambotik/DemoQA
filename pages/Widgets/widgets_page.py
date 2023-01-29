@@ -1,11 +1,13 @@
 import random
+import time
 
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date, generated_time_through_15_minutes
-from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators
+from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
+    SliderPageLocators, ProgressBarPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -157,3 +159,38 @@ class DatePickerPage(BasePage):
             if item.text == value:
                 item.click()
                 break
+
+
+class SliderPage(BasePage):
+    locators = SliderPageLocators()
+
+    def change_slider_value(self):
+        Logger.add_start_step(method='change_slider_value')
+        value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        print(f'Value before: {value_before}')
+        slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
+        self.action_drag_and_drop_offset(slider_input, random.randint(1, 100), 0)
+        value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        print(f'Value after: {value_after}')
+        Logger.add_end_step(url=self.driver.current_url, method='change_slider_value')
+        return value_before, value_after
+
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarPageLocators()
+
+    def check_progress_bar_value(self):
+        Logger.add_start_step(method='check_progress_bar_value')
+        value_before_start = self.element_is_visible(self.locators.PROGRESS_BAR).text
+        print('Value before start: ', value_before_start)
+        click_start = self.element_is_visible(self.locators.START_AND_STOP_BUTTON)
+        click_start.click()
+        print('Click start')
+        time.sleep(random.randint(1, 5))
+        click_stop = self.element_is_visible(self.locators.START_AND_STOP_BUTTON)
+        click_stop.click()
+        print('Click stop')
+        value_after_stop = self.element_is_visible(self.locators.PROGRESS_BAR).text
+        print('Value after stop: ', value_after_stop)
+        Logger.add_end_step(url=self.driver.current_url, method='check_progress_bar_value')
+        return value_before_start, value_after_stop

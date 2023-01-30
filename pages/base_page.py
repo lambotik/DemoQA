@@ -6,10 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait as wait
 
 
 class BasePage:
-    def __init__(self, driver, url):
+    def __init__(self, driver, url, timeout=10):
         self.driver = driver
         self.url = url
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(timeout)
 
     def get_current_url(self):
         get_url = self.driver.current_url
@@ -87,4 +87,9 @@ class BasePage:
     def action_drag_and_drop_offset(self, element, x_coord, y_coord):
         action = ActionChains(self.driver)
         action.drag_and_drop_by_offset(element, x_coord, y_coord)
+        action.perform()
+
+    def action_move_to_element(self, element):
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
         action.perform()

@@ -23,4 +23,14 @@
 - Nested Frames
 - Modal Dialogs
 
+### In the 'Widgets' section, you will be shown interacting with :
+- Accordian
+- Auto Complete
+- Date Picker
+- Slider
+- Progress Bar
+- Tabs
+- Tool Tips
+- Menu
+
 # To be continued!

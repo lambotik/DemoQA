@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date, generated_time_through_15_minutes
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolsTipsPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolsTipsPageLocators, MenuPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -308,3 +308,18 @@ class ToolsTipsPage(BasePage):
         digit = self.get_text_from_tool_tips(self.locators.DIGIT_HOVER_ME, self.locators.MESSAGE_AFTER_HOVER)
         Logger.add_end_step(url=self.driver.current_url, method='check_all_tool_tips')
         return button, input_field, text, digit
+
+
+class MenuPage(BasePage):
+    locators = MenuPageLocators()
+
+    def check_menu_tabs_and_subtabs(self):
+        Logger.add_start_step(method='check_menu_tabs_and_subtabs')
+        menu_item_list = self.elements_are_present(self.locators.MENU_ITEM_LIST)
+        data = []
+        for item in menu_item_list:
+            self.action_move_to_element(item)
+            data.append(item.text)
+        print(data)
+        Logger.add_end_step(url=self.driver.current_url, method='check_menu_tabs_and_subtabs')
+        return data

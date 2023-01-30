@@ -62,3 +62,7 @@ class ToolsTipsPageLocators:
     TEXT_HOVER_ME = (By.XPATH, '//*[.="Contrary"]')
     DIGIT_HOVER_ME = (By.XPATH, '//*[.="1.10.32"]')
     MESSAGE_AFTER_HOVER = (By.XPATH, '//div[@class="tooltip-inner"]')
+
+
+class MenuPageLocators:
+    MENU_ITEM_LIST = (By.XPATH, '//*[@id="nav"]//a')

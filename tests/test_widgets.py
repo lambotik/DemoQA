@@ -1,7 +1,7 @@
 import pytest
 
 from pages.Widgets.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, \
-    TabsPage, ToolsTipsPage
+    TabsPage, ToolsTipsPage, MenuPage
 
 
 class TestWidgetsPage:
@@ -112,31 +112,40 @@ class TestWidgetsPage:
             tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
             tools_tips_page.open()
             message_after_hover = tools_tips_page.check_message_after_hover_to_button()
-            assert message_after_hover == 'You hovered over the Button'
+            assert message_after_hover == 'You hovered over the Button', 'Hover missing or incorrect content'
 
         def test_check_message_after_hover_to_input(self, driver):
             tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
             tools_tips_page.open()
             message_after_hover = tools_tips_page.check_message_after_hover_to_input()
-            assert message_after_hover == 'You hovered over the text field'
+            assert message_after_hover == 'You hovered over the text field', 'Hover missing or incorrect content'
 
         def test_check_message_after_hover_to_text(self, driver):
             tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
             tools_tips_page.open()
             message_after_hover = tools_tips_page.check_message_after_hover_to_text()
-            assert message_after_hover == 'You hovered over the Contrary'
+            assert message_after_hover == 'You hovered over the Contrary', 'Hover missing or incorrect content'
 
         def test_check_message_after_hover_to_digit(self, driver):
             tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
             tools_tips_page.open()
             message_after_hover = tools_tips_page.check_message_after_hover_to_digit()
-            assert message_after_hover == 'You hovered over the 1.10.32'
+            assert message_after_hover == 'You hovered over the 1.10.32', 'Hover missing or incorrect content'
 
         def test_check_all_tool_tips(self, driver):
             tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
             tools_tips_page.open()
             button, input_field, text, digit = tools_tips_page.check_all_tool_tips()
-            assert button == 'You hovered over the Button'
-            assert input_field == 'You hovered over the text field'
-            assert text == 'You hovered over the Contrary'
-            assert digit == 'You hovered over the 1.10.32'
+            assert button == 'You hovered over the Button', 'Hover missing or incorrect content'
+            assert input_field == 'You hovered over the text field', 'Hover missing or incorrect content'
+            assert text == 'You hovered over the Contrary', 'Hover missing or incorrect content'
+            assert digit == 'You hovered over the 1.10.32', 'Hover missing or incorrect content'
+
+    class TestMenu:
+
+        def test_check_menu_tabs_and_subtabs(self, driver):
+            menu_page = MenuPage(driver, 'https://demoqa.com/menu')
+            menu_page.open()
+            data = menu_page.check_menu_tabs_and_subtabs()
+            assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
+                            'Sub Sub Item 2', 'Main Item 3'], 'Menu items do not exist or have nit been selected'

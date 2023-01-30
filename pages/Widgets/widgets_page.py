@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date, generated_time_through_15_minutes
 from locators.widgets_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolsTipsPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -208,34 +208,103 @@ class TabsPage(BasePage):
         return len_text
 
     def check_what_tab(self):
+        Logger.add_start_step(method='check_what_tab')
         title = self.check_title(self.locators.TAB_WHAT)
         self.element_is_visible(self.locators.TAB_WHAT).click()
         len_text = self.get_len_text()
         print(f'Title name is: {title}')
         print(f'Length text is: {len_text}')
+        Logger.add_end_step(url=self.driver.current_url, method='check_what_tab')
         return title, len_text
 
     def check_origin_tab(self):
+        Logger.add_start_step(method='check_origin_tab')
         title = self.check_title(self.locators.TAB_ORIGIN)
         self.element_is_visible(self.locators.TAB_ORIGIN).click()
         len_text = self.get_len_text()
         print(f'Title name is: {title}')
         print(f'Length text is: {len_text}')
+        Logger.add_end_step(url=self.driver.current_url, method='check_origin_tab')
         return title, len_text
 
     def check_use_tab(self):
+        Logger.add_start_step(method='check_use_tab')
         title = self.check_title(self.locators.TAB_USE)
         self.element_is_visible(self.locators.TAB_USE).click()
         len_text = self.get_len_text()
         print(f'Title name is: {title}')
         print(f'Length text is: {len_text}')
+        Logger.add_end_step(url=self.driver.current_url, method='check_use_tab')
         return title, len_text
 
     def check_more_tab(self):
+        Logger.add_start_step(method='check_more_tab')
         title = self.check_title(self.locators.TAB_MORE)
         self.element_is_visible(self.locators.TAB_MORE).click()
         len_text = self.get_len_text()
         print(f'Title name is: {title}')
         print(f'Length text is: {len_text}')
+        Logger.add_end_step(url=self.driver.current_url, method='check_more_tab')
         return title, len_text
 
+
+class ToolsTipsPage(BasePage):
+    locators = ToolsTipsPageLocators()
+
+    def get_message_text(self):
+        return self.element_is_visible(self.locators.MESSAGE_AFTER_HOVER).text
+
+    def check_message_after_hover_to_button(self):
+        Logger.add_start_step(method='check_message_after_hover_to_button')
+        button = self.element_is_visible(self.locators.BUTTON_HOVER_ME)
+        self.action_move_to_element(button)
+        message = self.get_message_text()
+        print(message)
+        Logger.add_end_step(url=self.driver.current_url, method='check_message_after_hover_to_button')
+        return message
+
+    def check_message_after_hover_to_input(self):
+        Logger.add_start_step(method='check_message_after_hover_to_input')
+        button = self.element_is_visible(self.locators.INPUT_HOVER_ME)
+        self.action_move_to_element(button)
+        message = self.get_message_text()
+        print(message)
+        Logger.add_end_step(url=self.driver.current_url, method='check_message_after_hover_to_input')
+        return message
+
+    def check_message_after_hover_to_text(self):
+        Logger.add_start_step(method='check_message_after_hover_to_text')
+        button = self.element_is_visible(self.locators.TEXT_HOVER_ME)
+        self.action_move_to_element(button)
+        message = self.get_message_text()
+        print(message)
+        Logger.add_end_step(url=self.driver.current_url, method='check_message_after_hover_to_text')
+        return message
+
+    def check_message_after_hover_to_digit(self):
+        Logger.add_start_step(method='check_message_after_hover_to_digit')
+        button = self.element_is_visible(self.locators.DIGIT_HOVER_ME)
+        self.action_move_to_element(button)
+        message = self.get_message_text()
+        print(message)
+        Logger.add_end_step(url=self.driver.current_url, method='check_message_after_hover_to_digit')
+        return message
+
+    def get_text_from_tool_tips(self, hover_element, wait):
+        element = self.element_is_present(hover_element)
+        self.action_move_to_element(element)
+        time.sleep(0.2)
+        self.element_is_visible(wait)
+        tool_tip_text = self.element_is_visible(self.locators.MESSAGE_AFTER_HOVER)
+        text = tool_tip_text.text
+        print(text)
+        return text
+
+    def check_all_tool_tips(self):
+        Logger.add_start_step(method='check_all_tool_tips')
+        button = self.get_text_from_tool_tips(self.locators.BUTTON_HOVER_ME, self.locators.MESSAGE_AFTER_HOVER)
+        input_field = self.get_text_from_tool_tips(self.locators.INPUT_HOVER_ME, self.locators.MESSAGE_AFTER_HOVER)
+        text = self.get_text_from_tool_tips(self.locators.TEXT_HOVER_ME, self.locators.MESSAGE_AFTER_HOVER)
+        digit = self.get_text_from_tool_tips(self.locators.DIGIT_HOVER_ME, self.locators.MESSAGE_AFTER_HOVER)
+        Logger.add_end_step(url=self.driver.current_url, method='check_all_tool_tips')
+        return button, input_field, text, digit

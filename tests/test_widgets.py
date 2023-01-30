@@ -1,7 +1,7 @@
 import pytest
 
 from pages.Widgets.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, \
-    TabsPage
+    TabsPage, ToolsTipsPage
 
 
 class TestWidgetsPage:
@@ -106,3 +106,37 @@ class TestWidgetsPage:
             assert tab_title == 'More', 'Title does not match'
             assert length_text > 0, 'Text is missing'
 
+    class TestToolsTips:
+
+        def test_check_message_after_hover_to_button(self, driver):
+            tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tools_tips_page.open()
+            message_after_hover = tools_tips_page.check_message_after_hover_to_button()
+            assert message_after_hover == 'You hovered over the Button'
+
+        def test_check_message_after_hover_to_input(self, driver):
+            tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tools_tips_page.open()
+            message_after_hover = tools_tips_page.check_message_after_hover_to_input()
+            assert message_after_hover == 'You hovered over the text field'
+
+        def test_check_message_after_hover_to_text(self, driver):
+            tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tools_tips_page.open()
+            message_after_hover = tools_tips_page.check_message_after_hover_to_text()
+            assert message_after_hover == 'You hovered over the Contrary'
+
+        def test_check_message_after_hover_to_digit(self, driver):
+            tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tools_tips_page.open()
+            message_after_hover = tools_tips_page.check_message_after_hover_to_digit()
+            assert message_after_hover == 'You hovered over the 1.10.32'
+
+        def test_check_all_tool_tips(self, driver):
+            tools_tips_page = ToolsTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tools_tips_page.open()
+            button, input_field, text, digit = tools_tips_page.check_all_tool_tips()
+            assert button == 'You hovered over the Button'
+            assert input_field == 'You hovered over the text field'
+            assert text == 'You hovered over the Contrary'
+            assert digit == 'You hovered over the 1.10.32'

@@ -33,4 +33,11 @@
 - Tool Tips
 - Menu
 
+### In the 'Interactions' section, you will be shown interacting with :
+- Sortable
+- Selectable
+- Resizable
+- Droppable
+- Dragabble
+
 # To be continued!

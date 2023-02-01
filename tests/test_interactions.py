@@ -1,4 +1,4 @@
-from pages.Interactions.interactions_page import SortablePage, SelectablePage
+from pages.Interactions.interactions_page import SortablePage, SelectablePage, ResizablePage
 
 
 class TestInteractionsPage:
@@ -27,3 +27,8 @@ class TestInteractionsPage:
             selectable_page.open()
             selected_items, unselected_items = selectable_page.grid_random_selection_and_return_active_and_inactive_elements()
             assert unselected_items not in selected_items, 'Elements are selected and canceled'
+
+    class TestResizable:
+        def test_check_change_list_order(self, driver):
+            resizable_page = ResizablePage(driver, 'https://demoqa.com/selectable')
+            resizable_page.open()

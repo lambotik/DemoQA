@@ -1,6 +1,6 @@
 import random
 
-from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators
+from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -65,7 +65,9 @@ class SelectablePage(BasePage):
         print('List of inactive elements: ', list_not_selected_elements)
         Logger.add_end_step(url=self.driver.current_url,
                             method='random_selection_and_return_active_and_inactive_elements')
-        return list_active_elements, list_not_selected_elements
+        str_active = ' '.join(list_active_elements)
+        str_inactive = ' '.join(list_not_selected_elements)
+        return str_active, str_inactive
 
     def grid_random_selection_and_return_active_and_inactive_elements(self):
         Logger.add_start_step(method='grid_random_selection_and_return_active_and_inactive_elements')
@@ -79,6 +81,13 @@ class SelectablePage(BasePage):
         not_selected_elements = self.get_list_elements(self.locators.LIST_ITEMS_GRID_TAB)
         list_not_selected_elements = [item.text for item in not_selected_elements]
         print('List of inactive elements: ', list_not_selected_elements)
+        str_active = ' '.join(list_active_elements)
+        str_inactive = ' '.join(list_not_selected_elements)
         Logger.add_end_step(url=self.driver.current_url,
                             method='grid_random_selection_and_return_active_and_inactive_elements')
-        return list_active_elements, list_not_selected_elements
+        return str_active, str_inactive
+
+
+
+class ResizablePage(BasePage):
+    locators = ResizablePageLocators()

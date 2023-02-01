@@ -22,3 +22,7 @@ class SelectablePageLocators:
         By.CSS_SELECTOR, 'div[id="gridContainer"]  li[class="list-group-item list-group-item-action"]')
     LIST_ACTIVE_ITEMS_GRID_TAB = (
         By.CSS_SELECTOR, 'div[id="gridContainer"]  li[class="list-group-item active list-group-item-action"]')
+
+
+class ResizablePageLocators:
+    LIST = (By.XPATH, '//a[@id="demo-tab-list"]')

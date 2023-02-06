@@ -1,6 +1,8 @@
 import random
+import time
 
-from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
+from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
+    DragAndDropPageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -128,3 +130,77 @@ class ResizablePage(BasePage):
         print(f'Resizable tab min size: {min_size}')
         Logger.add_end_step(url=self.driver.current_url, method='change_resizable')
         return max_size, min_size
+
+
+class DragAndDropPage(BasePage):
+    locators = DragAndDropPageLocators()
+
+    def drop_simple(self):
+        Logger.add_start_step(method='drop_simple')
+        self.element_is_visible(self.locators.SIMPLE).click()
+        drag_div = self.element_is_visible(self.locators.DRAG_ME)
+        drop_div = self.element_is_visible(self.locators.DROPPABLE)
+        self.action_drag_and_drop_element(drag_div, drop_div)
+        print(drop_div.text)
+        Logger.add_end_step(url=self.driver.current_url, method='drop_simple')
+        return drop_div.text
+
+    def drop_accept(self):
+        Logger.add_start_step(method='drop_accept')
+        self.element_is_visible(self.locators.ACCEPT).click()
+        acceptable = self.element_is_visible(self.locators.ACCEPTABLE)
+        not_acceptable = self.element_is_visible(self.locators.NOT_ACCEPTABLE)
+        drop_div = self.element_is_visible(self.locators.DROP_HERE)
+        self.action_drag_and_drop_element(not_acceptable, drop_div)
+        drop_div_not_accept = drop_div.text
+        print(drop_div_not_accept)
+        self.action_drag_and_drop_element(acceptable, drop_div)
+        drop_div_accept = drop_div.text
+        print(drop_div_accept)
+        Logger.add_end_step(url=self.driver.current_url, method='drop_accept')
+        return drop_div_accept, drop_div_not_accept
+
+    def drop_prevent_propogation(self):
+        Logger.add_start_step(method='drop_prevent_propogation')
+        self.element_is_visible(self.locators.PREVENT_PROPOGATION).click()
+        drag_div = self.element_is_visible(self.locators.DRAG_ME_PREVENT)
+        not_greedy_box = self.element_is_visible(self.locators.NOT_GREEDY_BOX)
+        not_greedy = self.element_is_visible(self.locators.NOT_GREEDY)
+        greedy_box = self.element_is_visible(self.locators.GREEDY_BOX)
+        greedy = self.element_is_visible(self.locators.GREEDY)
+        self.action_drag_and_drop_element(drag_div, not_greedy)
+        not_greedy_box_text = not_greedy_box.text
+        not_greedy_text = not_greedy.text
+        self.action_drag_and_drop_element(drag_div, greedy)
+        greedy_box_text = greedy_box.text
+        greedy_text = greedy.text
+        Logger.add_end_step(url=self.driver.current_url, method='drop_prevent_propogation')
+        return not_greedy_box_text, not_greedy_text, greedy_box_text, greedy_text
+
+    def drop_will_revert(self):
+        Logger.add_start_step(method='drop_will_revert')
+        self.element_is_visible(self.locators.REVERT_DRAGGABLE).click()
+        drag_div = self.element_is_visible(self.locators.WILL_REVERT)
+        drop_div = self.element_is_visible(self.locators.REVERT_DROP_HERE)
+        self.action_drag_and_drop_offset(self.element_is_visible(self.locators.WILL_REVERT), 0, 1)
+        drag_div_position_before = drag_div.get_attribute('style')
+        self.action_drag_and_drop_element(drag_div, drop_div)
+        time.sleep(1)
+        drag_div_position_after = drag_div.get_attribute('style')
+        Logger.add_end_step(url=self.driver.current_url, method='drop_will_revert')
+        return drag_div_position_before, drag_div_position_after, drop_div.text
+
+    def drop_will_not_revert(self):
+        Logger.add_start_step(method='drop_will_not_revert')
+        self.element_is_visible(self.locators.REVERT_DRAGGABLE).click()
+        drag_div = self.element_is_visible(self.locators.NOT_REVERT)
+        drop_div = self.element_is_visible(self.locators.REVERT_DROP_HERE)
+        self.action_drag_and_drop_offset(self.element_is_visible(self.locators.NOT_REVERT), 0, 1)
+        time.sleep(1)
+        drag_div_position_before = drag_div.get_attribute('style')
+        self.action_drag_and_drop_element(drag_div, drop_div)
+        time.sleep(1)
+        drag_div_position_after = drag_div.get_attribute('style')
+        Logger.add_end_step(url=self.driver.current_url, method='drop_will_not_revert')
+        return drag_div_position_before, drag_div_position_after, drop_div.text
+

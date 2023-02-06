@@ -31,3 +31,27 @@ class ResizablePageLocators:
     RESIZABLE = (By.CSS_SELECTOR, 'div[id="resizable"]')
     RESIZABLE_HANDLE = (
         By.CSS_SELECTOR, 'div[id="resizable"] span[class="react-resizable-handle react-resizable-handle-se"]')
+
+
+class DragAndDropPageLocators:
+    # Simple
+    SIMPLE = (By.CSS_SELECTOR, 'a[id="droppableExample-tab-simple"]')
+    DRAG_ME = (By.CSS_SELECTOR, 'div[id="draggable"]')
+    DROPPABLE = (By.CSS_SELECTOR, 'div[id="droppableExample-tabpane-simple"] div[id="droppable"]')
+    # Accept
+    ACCEPT = (By.CSS_SELECTOR, 'a[id="droppableExample-tab-accept"]')
+    ACCEPTABLE = (By.CSS_SELECTOR, 'div[id="acceptable"]')
+    NOT_ACCEPTABLE = (By.CSS_SELECTOR, 'div[id="notAcceptable"]')
+    DROP_HERE = (By.CSS_SELECTOR, 'div[id="droppableExample-tabpane-accept"] div[id="droppable"]')
+    # Prevent Propogation
+    PREVENT_PROPOGATION = (By.CSS_SELECTOR, 'a[id="droppableExample-tab-preventPropogation"]')
+    DRAG_ME_PREVENT = (By.CSS_SELECTOR, 'div[id="dragBox"]')
+    NOT_GREEDY_BOX = (By.CSS_SELECTOR, 'div[id="notGreedyDropBox"] p:nth-child(1)')
+    NOT_GREEDY = (By.CSS_SELECTOR, 'div[id="notGreedyInnerDropBox"]')
+    GREEDY_BOX = (By.CSS_SELECTOR, 'div[id="greedyDropBox"] p:nth-child(1)')
+    GREEDY = (By.CSS_SELECTOR, 'div[id="greedyDropBoxInner"]')
+    # Revert Draggable
+    REVERT_DRAGGABLE = (By.CSS_SELECTOR, 'a[id="droppableExample-tab-revertable"]')
+    WILL_REVERT = (By.CSS_SELECTOR, 'div[id="revertable"]')
+    NOT_REVERT = (By.CSS_SELECTOR, 'div[id="notRevertable"]')
+    REVERT_DROP_HERE = (By.CSS_SELECTOR, 'div[id="droppableExample-tabpane-revertable"] div[id="droppable"]')

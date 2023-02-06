@@ -90,3 +90,41 @@ class SelectablePage(BasePage):
 
 class ResizablePage(BasePage):
     locators = ResizablePageLocators()
+
+    def get_px_from_width_height(self, value_of_size):
+        width = value_of_size
+        return width
+
+    def get_max_min_size(self, element):
+        size = self.element_is_present(element)
+        value_size = size.get_attribute('style')
+        return value_size
+
+    def change_resizable_box(self):
+        Logger.add_start_step(method='change_resizable_box')
+        value_before = self.get_max_min_size(self.locators.RESIZABLE_BOX)
+        print(f'Starting size, resizable box: {value_before}')
+        self.action_drag_and_drop_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), 400, 200)
+        max_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
+        print(f'Resizable box max size: {max_size}')
+        self.action_drag_and_drop_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), -400, -200)
+        min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
+        print(f'Resizable box min size: {min_size}')
+        Logger.add_end_step(url=self.driver.current_url, method='change_resizable_box')
+        return max_size, min_size
+
+    def change_resizable(self):
+        Logger.add_start_step(method='change_resizable')
+        self.element_is_visible(self.locators.RESIZABLE)
+        value_before = self.get_max_min_size(self.locators.RESIZABLE)
+        print(f'Starting size, resizable tab: {value_before}')
+        self.action_drag_and_drop_offset(self.element_is_visible(self.locators.RESIZABLE_HANDLE),
+                                         random.randint(1, 300), random.randint(1, 300))
+        max_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE))
+        print(f'Resizable tab max size: {max_size}')
+        self.action_drag_and_drop_offset(self.element_is_present(self.locators.RESIZABLE_HANDLE),
+                                         random.randint(-200, -1), random.randint(-200, -1))
+        min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE))
+        print(f'Resizable tab min size: {min_size}')
+        Logger.add_end_step(url=self.driver.current_url, method='change_resizable')
+        return max_size, min_size

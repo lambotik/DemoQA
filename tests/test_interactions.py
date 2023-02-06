@@ -29,6 +29,12 @@ class TestInteractionsPage:
             assert unselected_items not in selected_items, 'Elements are selected and canceled'
 
     class TestResizable:
-        def test_check_change_list_order(self, driver):
-            resizable_page = ResizablePage(driver, 'https://demoqa.com/selectable')
+        def test_check_change_size_resizable_windows(self, driver):
+            resizable_page = ResizablePage(driver, 'https://demoqa.com/resizable')
             resizable_page.open()
+            max_size, min_size = resizable_page.change_resizable_box()
+            size_before, size_after = resizable_page.change_resizable()
+            assert max_size == 'width: 500px; height: 300px;', 'Maximum size not equal width: 500px; height: 300px;'
+            assert min_size == 'width: 150px; height: 150px;', 'Minimum size not equal width: 150px; height: 150px;'
+            assert size_before != size_after, 'Resizable has not been changed'
+

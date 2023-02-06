@@ -25,4 +25,9 @@ class SelectablePageLocators:
 
 
 class ResizablePageLocators:
-    LIST = (By.XPATH, '//a[@id="demo-tab-list"]')
+    RESIZABLE_BOX = (By.CSS_SELECTOR, 'div[id="resizableBoxWithRestriction"]')
+    RESIZABLE_BOX_HANDLE = (By.CSS_SELECTOR,
+                            'div[id="resizableBoxWithRestriction"] span[class="react-resizable-handle react-resizable-handle-se"]')
+    RESIZABLE = (By.CSS_SELECTOR, 'div[id="resizable"]')
+    RESIZABLE_HANDLE = (
+        By.CSS_SELECTOR, 'div[id="resizable"] span[class="react-resizable-handle react-resizable-handle-se"]')

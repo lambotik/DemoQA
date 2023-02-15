@@ -1,8 +1,9 @@
 import random
+import re
 import time
 
 from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
-    DragAndDropPageLocators
+    DragAndDropPageLocators, DragabblePageLocators
 from pages.base_page import BasePage
 from utilities.logger import Logger
 
@@ -204,3 +205,57 @@ class DragAndDropPage(BasePage):
         Logger.add_end_step(url=self.driver.current_url, method='drop_will_not_revert')
         return drag_div_position_before, drag_div_position_after, drop_div.text
 
+
+class DragabblePage(BasePage):
+    locators = DragabblePageLocators()
+
+    def get_element_position_before_after(self, element):
+        self.action_drag_and_drop_offset(element, random.randint(0, 50), random.randint(0, 50))
+        position_before = element.get_attribute('style')
+        self.action_drag_and_drop_offset(element, random.randint(0, 50), random.randint(0, 50))
+        position_after = element.get_attribute('style')
+        return [position_before], [position_after]
+
+    def sample_drag_box(self):
+        drag_div = self.element_is_visible(self.locators.DRAG_ME)
+        position_before, position_after = self.get_element_position_before_after(drag_div)
+        print(f'Position element before: {position_before}')
+        print(f'Position element after: {position_after}')
+        return position_before, position_after
+
+    def get_position(self, position):
+        position_before = position[0]
+        left = position_before[0]
+        top = position_before[0]
+        l = re.findall(r'\d+', left)
+        t = re.findall(r'\d+', top)
+        le = [int(i) for i in l][0]
+        to = [int(i) for i in t][1]
+        print('value left:', le)
+        print('value top', to)
+        position_a = position[1]
+        left_after = position_a[0]
+        top_after = position_a[0]
+        l = re.findall(r'\d+', left_after)
+        t = re.findall(r'\d+', top_after)
+        le_a = [int(i) for i in l][0]
+        to_a = [int(i) for i in t][1]
+        print('value left after:', le_a)
+        print('value top after', to_a)
+        return le, to, le_a, to_a
+
+    def axis_restricted_x(self):
+        self.element_is_visible(self.locators.AXIS_RESTRICTED).click()
+        only_x = self.element_is_visible(self.locators.ONLY_X)
+        position = self.get_element_position_before_after(only_x)
+        print(position)
+        left_b, top_b, left_a, top_a = self.get_position(position)
+        return left_b, top_b, left_a, top_a
+
+    def axis_restricted_y(self):
+        self.element_is_visible(self.locators.AXIS_RESTRICTED).click()
+        only_y = self.element_is_visible(self.locators.ONLY_Y)
+        position = self.get_element_position_before_after(only_y)
+        print(position)
+        left_b, top_b, left_a, top_a = self.get_position(position)
+        return left_b, top_b, left_a, top_a

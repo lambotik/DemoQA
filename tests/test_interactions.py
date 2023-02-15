@@ -1,4 +1,5 @@
-from pages.Interactions.interactions_page import SortablePage, SelectablePage, ResizablePage, DragAndDropPage
+from pages.Interactions.interactions_page import SortablePage, SelectablePage, ResizablePage, DragAndDropPage, \
+    DragabblePage
 
 
 class TestInteractionsPage:
@@ -74,3 +75,24 @@ class TestInteractionsPage:
             position_before, position_after, text = drag_and_drop_page.drop_will_not_revert()
             assert position_before != position_after, 'The element has not been revert'
             assert text == 'Dropped!', 'The element text has not been changed'
+
+    class TestDragabble:
+        def test_sample_drag_box(self, driver):
+            dragabble_page = DragabblePage(driver, 'https://demoqa.com/dragabble')
+            dragabble_page.open()
+            position_before, position_after = dragabble_page.sample_drag_box()
+            assert position_before != position_after, 'The position of the box has not been changed'
+
+        def test_axis_restricted_x(self, driver):
+            dragabble_page = DragabblePage(driver, 'https://demoqa.com/dragabble')
+            dragabble_page.open()
+            left_px_before, top_px_before, left_px_after, top_px_after = dragabble_page.axis_restricted_x()
+            assert left_px_before != left_px_after and top_px_before == top_px_after, \
+                'The position of the box has not changed or it has shifted off the axis'
+
+        def test_axis_restricted_y(self, driver):
+            dragabble_page = DragabblePage(driver, 'https://demoqa.com/dragabble')
+            dragabble_page.open()
+            left_px_before, top_px_before, left_px_after, top_px_after = dragabble_page.axis_restricted_y()
+            assert left_px_before == left_px_after and top_px_before != top_px_after, \
+                'The position of the box has not changed or it has shifted off the axis'

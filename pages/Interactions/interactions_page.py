@@ -245,17 +245,21 @@ class DragabblePage(BasePage):
         return le, to, le_a, to_a
 
     def axis_restricted_x(self):
+        Logger.add_start_step(method='axis_restricted_x')
         self.element_is_visible(self.locators.AXIS_RESTRICTED).click()
         only_x = self.element_is_visible(self.locators.ONLY_X)
         position = self.get_element_position_before_after(only_x)
         print(position)
         left_b, top_b, left_a, top_a = self.get_position(position)
+        Logger.add_end_step(url=self.driver.current_url, method='axis_restricted_x')
         return left_b, top_b, left_a, top_a
 
     def axis_restricted_y(self):
+        Logger.add_start_step(method='axis_restricted_y')
         self.element_is_visible(self.locators.AXIS_RESTRICTED).click()
         only_y = self.element_is_visible(self.locators.ONLY_Y)
         position = self.get_element_position_before_after(only_y)
         print(position)
         left_b, top_b, left_a, top_a = self.get_position(position)
+        Logger.add_end_step(url=self.driver.current_url, method='axis_restricted_y')
         return left_b, top_b, left_a, top_a

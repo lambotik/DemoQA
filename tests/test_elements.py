@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from pages.Elements.button_page import ButtonPage
@@ -10,10 +11,12 @@ from pages.Elements.upload_and_download_page import UploadAndDownloadPage
 from pages.Elements.web_table_page import WebTablePage
 
 
+@allure.suite('Elements')
 class TestElements:
+    @allure.feature('Text Box')
     class TestTextBox:
-
-        def test_fill_all_fields_and_check_output_in_table(self, driver):
+        @allure.title('Check Text Box')
+        def test_text_box(self, driver):
             text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
             text_box_page.open()
             text_box_page.assert_fill_all_fields_and_check_output_in_table()

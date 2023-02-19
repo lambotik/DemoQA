@@ -1,3 +1,5 @@
+import allure
+
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators
 from pages.base_page import BasePage
@@ -11,7 +13,7 @@ class TextBoxPage(BasePage):
 
     """"Заполняет форму рандомными данными при помощи генератора и библиотеки faker.
     Возвращает данные внесенные в форму"""
-
+    @allure.step()
     def fill_all_fields(self):
         # next обращается к generated_person() и возвращает по одному значению
         person_info = next(generated_person())

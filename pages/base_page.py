@@ -1,5 +1,7 @@
 import random
 
+import allure
+from allure_commons.types import AttachmentType
 from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as wait
@@ -19,9 +21,11 @@ class BasePage:
         self.driver.get(self.url)
 
     def element_is_visible(self, locator, timeout=5):
-        self.go_to_element(self.element_is_present(locator))
-        return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
-
+        with allure.step(f'Check if the {locator} is visible on the page'):
+            if self.go_to_element(self.element_is_present(locator)) != True:
+                self.attach_screenshot(locator)
+                return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
+            raise f'{locator} dose not visible\n {locator} Searching by: {locator[0]}\n Selector: {locator[1]}'
     def elements_are_visible(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
 
@@ -98,3 +102,10 @@ class BasePage:
         action = ActionChains(self.driver)
         action.drag_and_drop(what, where)
         action.perform()
+
+    def attach_screenshot(self, element):
+        """Create screenshot of current window and attach it in allure report
+        Args:
+         - file_name: str like 'Linkedin_button_not_found'
+        """
+        allure.attach(self.driver.get_screenshot_as_png(), name=element, attachment_type=AttachmentType.PNG)

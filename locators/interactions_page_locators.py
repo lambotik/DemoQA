@@ -59,7 +59,7 @@ class DragAndDropPageLocators:
 class DragabblePageLocators:
     # Simple
     SIMPLE = (By.CSS_SELECTOR, 'a[id="draggableExample-tab-simple"]')
-    DRAG_ME = (By.CSS_SELECTOR, 'div[id="draggableExample-tabpane-simple"]')
+    DRAG_ME = (By.CSS_SELECTOR, 'div[id="dragBox"]')
 
     # Axis Restricted
     AXIS_RESTRICTED = (By.CSS_SELECTOR, 'a[id="draggableExample-tab-axisRestriction"]')

@@ -3,7 +3,9 @@ import os
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope='function')
@@ -13,7 +15,10 @@ def driver():
     test_name = full_test_name[-1]
     test_name = test_name.replace(' (setup)', '')
     print(f'\nStart Test: <{test_name}> {start_time}')
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = Options()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    service = Service(executable_path=r"C:\Users\lambo\PycharmProjects\resource\chromedriver.exe")
+    driver = webdriver.Chrome(service=service)
     driver.maximize_window()
     yield driver
     finish_time = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))

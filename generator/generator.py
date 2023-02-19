@@ -28,7 +28,7 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\Дима\PycharmProjects\DemoQA\Filetest{random.randint(0, 999)}.txt'
+    path = rf'C:\Users\lambo\PycharmProjects\DemoQA\Filetest{random.randint(0, 999)}.txt'
     file = open(path, 'w+')
     file.write(f'Hellow World {random.randint(0, 999)}')
     file.close()

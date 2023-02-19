@@ -1,9 +1,12 @@
+import allure
+
 from pages.Forms.forms_page import FormsPage
 
-
-class TestFormsPage:
-    class TestForms:
-
+@allure.suite('Elaments')
+class TestFormsPage(object):
+    @allure.feature('Test Forms')
+    class TestForms(object):
+        @allure.step('Check test form input and output data')
         def test_form_input_and_output_data(self, driver):
             forms_page = FormsPage(driver, 'https://demoqa.com/automation-practice-form')
             forms_page.open()

@@ -1,5 +1,5 @@
 import allure
-
+import pytest
 from pages.Interactions.interactions_page import SortablePage, SelectablePage, ResizablePage, DragAndDropPage, \
     DragabblePage
 

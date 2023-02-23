@@ -4,8 +4,8 @@ from pages.Alerts_Frame_Windows.alerts_frame_windows_page import AlertFrameWindo
     NestedFramePage, \
     ModalDialogPage
 
-@allure.suite('Test Alert Frame Windows Page')
-class TestAlertFrameWindowsPage:
+@allure.suite('Test Alert Frame Windows')
+class TestAlertFrameWindows:
     @allure.feature('Test Alert Frame Windows Page')
     class TestAlertFrameWindowsPage:
         @allure.step('Check new tab')
@@ -24,15 +24,15 @@ class TestAlertFrameWindowsPage:
 
     @allure.feature('Test Alert Page')
     class TestAlertPage:
-        @allure.step('Check check alert text')
-        def test_check_alert_text(self, driver):
+        @allure.step('Check alert text')
+        def test_alert_text(self, driver):
             alerts_page = AlertsPage(driver, 'https://demoqa.com/alerts')
             alerts_page.open()
             alert_text = alerts_page.check_alert_text()
             assert alert_text == 'You clicked a button', 'Alert is not present'
 
         @allure.step('Check alert appear 5 sec')
-        def test_check_alert_appear_5_sec(self, driver):
+        def test_alert_appear_5_sec(self, driver):
             alerts_page = AlertsPage(driver, 'https://demoqa.com/alerts')
             alerts_page.open()
             alert_text = alerts_page.check_alert_appear_5_sec()
@@ -40,14 +40,14 @@ class TestAlertFrameWindowsPage:
                                                                         'alert window after 5 second'
 
         @allure.step('Check confirm alert')
-        def test_check_confirm_alert(self, driver):
+        def test_confirm_alert(self, driver):
             alerts_page = AlertsPage(driver, 'https://demoqa.com/alerts')
             alerts_page.open()
             alert_text = alerts_page.check_confirm_alert()
             assert alert_text == 'You selected Ok', 'You do not press OK on the alert window'
 
         @allure.step('Check promt alert result')
-        def test_check_promt_alert_result(self, driver):
+        def test_promt_alert_result(self, driver):
             alerts_page = AlertsPage(driver, 'https://demoqa.com/alerts')
             alerts_page.open()
             send_text, result_text = alerts_page.check_promt_alert_result()

@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class TextBoxPageLocators:
-    # Input Form
+
     INPUT_FULL_NAME = (By.XPATH, "//input[@id='userName']")
     INPUT_EMAIL = (By.XPATH, "//input[@id='userEmail']")
     INPUT_CURRENT_ADDRESS = (By.XPATH, "//textarea[@id='currentAddress']")
@@ -10,7 +10,7 @@ class TextBoxPageLocators:
     BUTTON_SUBMIT = (By.XPATH, "//button[@id='submit']")
     JS_FULL_NAME = "#userName"
 
-    # Created Form
+
     CREATED_FULL_NAME = (By.XPATH, "//p[@id='name']")
     CREATED_EMAIL = (By.XPATH, "//p[@id='email']")
     CREATED_CURRENT_ADDRESS = (By.XPATH, "//p[@id='currentAddress']")
@@ -23,7 +23,7 @@ class CheckBoxPageLocators:
     CHECK_BOX_LIST = (By.XPATH, '//span[@class="rct-checkbox"]')
     CHECKED_ITEMS = (By.CSS_SELECTOR, 'svg[class="rct-icon rct-icon-check"]')
     OUTPUT_RESULT = (By.XPATH, '//span[@class="text-success"]')
-    # !!!В данном локаторе не указываем метод поиска, т.к. он указывается в функции
+
     TITLE_LIST_TEXT = './/ancestor::span[@class="rct-text"]'
 
 
@@ -35,13 +35,13 @@ class RadioButtonPageLocators:
 
 
 class WebTablePageLocators:
-    ADD_BUTTON = (By.XPATH, '//button[@id="addNewRecordButton"]')
-    INPUT_SEARCH = (By.XPATH, '//input[@id="searchBox"]')
-    # Registration Form
-    SUBMIT_BUTTON = (By.XPATH, '//button[@id="submit"]')
-    FIRST_NAME_INPUT = (By.XPATH, '//input[@id="firstName"]')
-    LAST_NAME_INPUT = (By.XPATH, '//input[@id="lastName"]')
-    EMAIL_INPUT = (By.XPATH, '//input[@id="userEmail"]')
+    ADD_BUTTON = (By.CSS_SELECTOR, 'button[id="addNewRecordButton"]')
+    INPUT_SEARCH = (By.CSS_SELECTOR, 'input[id="searchBox"]')
+
+    SUBMIT_BUTTON = (By.CSS_SELECTOR, 'button[id="submit"]')
+    FIRST_NAME_INPUT = (By.CSS_SELECTOR, 'input[id="firstName"]')
+    LAST_NAME_INPUT = (By.CSS_SELECTOR, 'input[id="lastName"]')
+    EMAIL_INPUT = (By.CSS_SELECTOR, '#userEmail')
     AGE_INPUT = (By.XPATH, '//input[@id="age"]')
     SALARY_INPUT = (By.XPATH, '//input[@id="salary"]')
     DEPARTAMENT_INPUT = (By.XPATH, '//input[@id="department"]')
@@ -50,9 +50,9 @@ class WebTablePageLocators:
     ROW_PARENT = './/ancestor::div[@class="rt-tr-group"]'
     NO_ROW = (By.XPATH, '//div[@class="rt-noData"]')
     SELECT_NUMBER_ROWS = (By.XPATH, '//select[@aria-label="rows per page"]')
-    # Table
+
     FULL_PEOPLE_LIST = (By.XPATH, '//div[@class="rt-tr-group"]')
-    # Update table
+
     EDIT_BUTTONS = (By.XPATH, '//span[@title="Edit"]')
     REGISTRATION_FORM_ALL_LINES = (By.CSS_SELECTOR, '.mr-sm-2.form-control')
 

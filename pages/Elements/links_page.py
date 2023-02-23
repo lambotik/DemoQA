@@ -69,7 +69,7 @@ class LinksPage(BasePage):
             print('Click on home link')
             home_link.click()
             print('Go to a new tab')
-            self.got_to_a_new_tab()
+            self.go_to_a_new_tab()
             url = self.driver.current_url
             print(f'Link href: {home_link_href}\nUrl: {url}\nUrl status code: {home_link_status_code}')
             return home_link_href, url, home_link_status_code

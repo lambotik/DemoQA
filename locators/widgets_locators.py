@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class AccordianPageLocators:
-    # Accordian
     FIRST_TAB = (By.XPATH, '//div[@id="section1Heading"]')
     FIRST_TAB_TEXT = (By.XPATH, '//div[@id="section1Content"]/p')
     SECOND_TAB = (By.XPATH, '//div[@id="section2Heading"]')
@@ -12,7 +11,6 @@ class AccordianPageLocators:
 
 
 class AutoCompletePageLocators:
-    # Auto complete
     INPUT_MULTI = (By.XPATH, '//input[@id="autoCompleteMultipleInput"]')
     LIST_MULTI_VALUE = (By.XPATH, '//div[@class="css-1rhbuit-multiValue auto-complete__multi-value"]')
     CLOSE_MULTI_VALUE_ELEMENT = (
@@ -26,7 +24,6 @@ class DatePickerPageLocators:
     DATE_SELECT_MONTH = (By.CSS_SELECTOR, 'select[class="react-datepicker__month-select"]')
     DATE_SELECT_YEAR = (By.CSS_SELECTOR, 'select[class="react-datepicker__year-select"]')
     DATE_SELECT_DAY_LIST = (By.CSS_SELECTOR, 'div[class^="react-datepicker__day react-datepicker__day"]')
-
     DATE_AND_TIME_INPUT = (By.CSS_SELECTOR, 'input[id="dateAndTimePickerInput"]')
     DATE_AND_TIME_MONTH = (By.CSS_SELECTOR, 'div[class="react-datepicker__month-read-view"]')
     DATE_AND_TIME_YEAR = (By.CSS_SELECTOR, 'div[class="react-datepicker__year-read-view"]')

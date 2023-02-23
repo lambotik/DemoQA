@@ -35,7 +35,7 @@ class UploadAndDownloadPage(BasePage):
         link_b = base64.b64decode(link)
         print('Decode the link into bytes')
         # прописываем путь для сохранения получаемой картинки
-        path_name_file = rf'C:\Users\Дима\PycharmProjects\DemoQA\FileTestjpg{random.randint(0, 999)}.jpg'
+        path_name_file = rf'C:\Users\lambo\PycharmProjects\DemoQA\FileTestjpg{random.randint(0, 999)}.jpg'
         file_name = path_name_file.split('\\')[-1]
         with open(path_name_file, 'wb+') as f:
             ''' отсекаем от декодированного кода лишние значения до искомого \xff\xd8,

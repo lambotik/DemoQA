@@ -14,7 +14,7 @@ class AlertFrameWindowsPage(BasePage):
         Logger.add_start_step(method='check_new_tab_page')
         self.element_is_visible(self.locators.NEW_TAB_BUTTON).click()
         print('Click New Tab Button')
-        self.got_to_a_new_tab()
+        self.go_to_a_new_tab()
         page_text = self.element_is_visible(self.locators.SAMPLE_PAGE).text
         print(page_text)
         Logger.add_end_step(url=self.driver.current_url, method='check_new_tab_page')
@@ -24,7 +24,7 @@ class AlertFrameWindowsPage(BasePage):
         Logger.add_start_step(method='check_new_window_page')
         self.element_is_visible(self.locators.NEW_WINDOW_BUTTON).click()
         print('Click New Tab Button')
-        self.got_to_a_new_tab()
+        self.go_to_a_new_tab()
         page_text = self.element_is_visible(self.locators.SAMPLE_PAGE).text
         print(page_text)
         Logger.add_end_step(url=self.driver.current_url, method='check_new_window_page')
@@ -37,7 +37,7 @@ class AlertsPage(BasePage):
     def check_alert_text(self):
         self.element_is_visible(self.locators.ALERT_BUTTON).click()
         print('Click Button')
-        alert_window = self.got_to_alert()
+        alert_window = self.go_to_alert()
         print(alert_window.text)
         return alert_window.text
 
@@ -45,7 +45,7 @@ class AlertsPage(BasePage):
         self.element_is_visible(self.locators.TIMER_ALERT_BUTTON).click()
         print('Click Button')
         time.sleep(5)
-        alert_window = self.got_to_alert()
+        alert_window = self.go_to_alert()
         print(alert_window.text)
         return alert_window.text
 
@@ -53,7 +53,7 @@ class AlertsPage(BasePage):
         Logger.add_start_step(method='check_confirm_alert')
         self.element_is_visible(self.locators.CONFIRM_BUTTON_ALERT).click()
         print('Click Button')
-        alert_window = self.got_to_alert()
+        alert_window = self.go_to_alert()
         alert_window_text = alert_window.text
         alert_window.accept()
         print(alert_window_text)
@@ -68,7 +68,7 @@ class AlertsPage(BasePage):
         text = person.first_name
         self.element_is_visible(self.locators.LOGIN_ALERT_BUTTON).click()
         print('Click Button')
-        alert_window = self.got_to_alert()
+        alert_window = self.go_to_alert()
         alert_window_text = alert_window.text
         alert_window.send_keys(f'{text}')
         alert_window.accept()

@@ -3,6 +3,10 @@ import random
 from faker import Faker
 
 from data.data import Person, Color, Date, Time
+from pathlib import Path
+
+RANDOM_FILE = Path(__file__).parent
+
 
 faker_ru = Faker('ru_RU')
 faker_en = Faker('En')
@@ -28,7 +32,7 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\lambo\PycharmProjects\DemoQA\Filetest{random.randint(0, 999)}.txt'
+    path = rf'{RANDOM_FILE}\Filetest{random.randint(0, 999)}.txt'
     file = open(path, 'w+')
     file.write(f'Hellow World {random.randint(0, 999)}')
     file.close()

@@ -1,10 +1,10 @@
 import datetime
 import os
+from logs.logger_path import LOGS_DIR
 
 
 class Logger:
-    file_path = r'C:\Users\lambo\PycharmProjects\DemoQA\logs\log_date_'
-    file_name = file_path + str(datetime.datetime.now().strftime("%d-%m-%Y_%H-%M-%S") + '.logs')
+    file_name = LOGS_DIR / str(datetime.datetime.now().strftime("%d-%m-%Y_%H-%M-%S") + '.log')
 
     @classmethod
     def write_log_to_file(cls, data: str):

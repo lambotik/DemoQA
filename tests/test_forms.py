@@ -2,7 +2,7 @@ import allure
 
 from pages.Forms.forms_page import FormsPage
 
-@allure.suite('Elaments')
+@allure.suite('Elements')
 class TestFormsPage(object):
     @allure.feature('Test Forms')
     class TestForms(object):

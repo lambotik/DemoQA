@@ -14,19 +14,17 @@ class BasePage:
         self.url = url
         self.driver.implicitly_wait(5)
 
-    @allure.step('Get current url')
     def get_current_url(self):
         get_url = self.driver.current_url
         print('Current url: ' + get_url)
 
-    @allure.step(f'Open {get_current_url}')
     def open(self):
-        self.driver.get(self.url)
+        with allure.step(f'Open page: {self.url}'):
+            self.driver.get(self.url)
 
     @allure.step('Check element is visible')
     def element_is_visible(self, locator, timeout=5):
         self.go_to_element(self.element_is_present(locator))
-        self.attach_screenshot(locator)
         return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
     @allure.step('Check elements are visible')
@@ -49,10 +47,9 @@ class BasePage:
     def elements_is_clickable(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
-    @allure.step('Check Go to element')
+
     def go_to_element(self, element):
-        with allure.step(f'Go to element {element}'):
-            self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        return self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     @allure.step('Click enter to element')
     def click_enter_to_element(self, locator, timeout=5):
@@ -137,4 +134,5 @@ class BasePage:
         Args:
          - file_name: str like 'Linkedin_button_not_found'
         """
-        allure.attach(self.driver.get_screenshot_as_png(), name=element, attachment_type=AttachmentType.PNG)
+        element_name = ''.join(element)
+        allure.attach(self.driver.get_screenshot_as_png(), name=element_name, attachment_type=AttachmentType.PNG)

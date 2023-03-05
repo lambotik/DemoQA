@@ -4,6 +4,7 @@ import allure
 
 import pytest
 from selenium import webdriver
+from selenium.common import UnexpectedAlertPresentException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -22,8 +23,12 @@ def driver():
     driver = webdriver.Chrome(service=service)
     driver.maximize_window()
     yield driver
-    attach = driver.get_screenshot_as_png()
-    allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
+    try:
+        attach = driver.get_screenshot_as_png()
+        allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
+    except UnexpectedAlertPresentException:
+        attach = driver.get_screenshot_as_png()
+        allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
     finish_time = str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
     print(f'Test Finish: {finish_time}')
     driver.quit()

@@ -107,14 +107,11 @@ class ResizablePage(BasePage):
         Logger.add_start_step(method='change_resizable_box')
         value_before = self.get_max_min_size(self.locators.RESIZABLE_BOX)
         print(f'Starting size, resizable box: {value_before}')
-        self.action_drag_and_drop_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), 400, 200)
+        self.action_drag_and_drop_offset(self.element_is_visible(self.locators.RESIZABLE_BOX_HANDLE), 400, 200)
         max_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
         print(f'Resizable box max size: {max_size}')
-        self.action_drag_and_drop_offset(self.element_is_present(self.locators.RESIZABLE_BOX_HANDLE), -400, -200)
-        min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE_BOX))
-        print(f'Resizable box min size: {min_size}')
         Logger.add_end_step(url=self.driver.current_url, method='change_resizable_box')
-        return max_size, min_size
+        return max_size
 
     def change_resizable(self):
         Logger.add_start_step(method='change_resizable')

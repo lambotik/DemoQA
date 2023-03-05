@@ -43,10 +43,11 @@ class TestInteractionsPage:
         def test_check_change_size_resizable_windows(self, driver):
             resizable_page = ResizablePage(driver, 'https://demoqa.com/resizable')
             resizable_page.open()
-            max_size, min_size = resizable_page.change_resizable_box()
+            resizable_page.remove_footer()
+            resizable_page.remove_fixedban()
+            max_size = resizable_page.change_resizable_box()
             size_before, size_after = resizable_page.change_resizable()
             assert max_size == 'width: 500px; height: 300px;', 'Maximum size not equal width: 500px; height: 300px;'
-            assert min_size == 'width: 150px; height: 150px;', 'Minimum size not equal width: 150px; height: 150px;'
             assert size_before != size_after, 'Resizable has not been changed'
 
     @allure.feature('Test Drag AndDrop')

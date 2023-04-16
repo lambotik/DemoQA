@@ -1,6 +1,9 @@
 # https://demoqa.com/
 ## This is my Python test automation demo project and it's still in the works. The project will have many interesting solutions.
 
+## To run a project and get an Allure report:
+- ```git clone https://github.com/lambotik/DemoQA.git```
+
 ### In the 'Elements' section, you will be shown interacting with web elements such as : 
 - Text Box
 -  Check Box

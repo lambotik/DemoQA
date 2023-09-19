@@ -1,36 +1,19 @@
 from datetime import datetime
-import os
 import allure
-
 import pytest
 from selenium import webdriver
-from selenium.common import UnexpectedAlertPresentException
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture()
 def driver():
-    start_time = str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
-    full_test_name = os.environ.get("PYTEST_CURRENT_TEST").split('::')
-    test_name = full_test_name[-1]
-    test_name = test_name.replace(' (setup)', '')
-    print(f'\nStart Test: <{test_name}> {start_time}')
-    options = Options()
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.maximize_window()
+    driver.implicitly_wait(10)
     yield driver
-    try:
-        attach = driver.get_screenshot_as_png()
-        allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
-    except UnexpectedAlertPresentException:
-        attach = driver.get_screenshot_as_png()
-        allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
-    finish_time = str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
-    print(f'Test Finish: {finish_time}')
+    attach = driver.get_screenshot_as_png()
+    allure.attach(attach, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
     driver.quit()
 
 

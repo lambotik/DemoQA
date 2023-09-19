@@ -1,2 +1,0 @@
-
-Start Test: <test_alert_appear_5_sec> 19-09-2023 22:34:35

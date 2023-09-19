@@ -1,0 +1,2 @@
+
+Start Test: <test_remove_all_colors> 19-09-2023 22:39:06

@@ -1,3 +1,0 @@
-Start System
-
-Start Test: <test_different_click_on_the_buttons> 19-09-2023 22:34:52

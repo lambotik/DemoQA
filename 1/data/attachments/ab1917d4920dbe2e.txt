@@ -1,2 +1,0 @@
-
-Start Test: <test_progress_bar_value> 19-09-2023 22:35:34

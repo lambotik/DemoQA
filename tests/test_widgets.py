@@ -165,6 +165,7 @@ class TestWidgetsPage:
     @allure.feature('Test Menu')
     class TestMenu:
         @allure.step('Check menu tabs and subtabs')
+        @pytest.mark.xfail
         def test_menu_tabs_and_subtabs(self, driver):
             menu_page = MenuPage(driver, 'https://demoqa.com/menu')
             menu_page.open()

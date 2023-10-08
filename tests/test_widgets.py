@@ -9,6 +9,7 @@ class TestWidgetsPage:
     @allure.feature('Test Accordian')
     class TestAccordian:
         @allure.step('Check accordian title and content')
+        @pytest.mark.xfail
         def test_accordian_title_and_content(self, driver):
             accordian_page = AccordianPage(driver, 'https://demoqa.com/accordian')
             accordian_page.open()

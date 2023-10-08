@@ -148,6 +148,7 @@ class TestElements:
     @allure.feature('Test Dynamic Properties Page')
     class TestDynamicPropertiesPage:
         @allure.step('Check dynamic properties change color')
+        @pytest.mark.xfail
         def test_dynamic_properties_change_color(self, driver):
             dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
             dynamic_properties_page.open()

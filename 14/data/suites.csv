@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Wed Sep 20 14:46:42 GMT 2023","Wed Sep 20 14:48:53 GMT 2023","130750","tests","Test Alert Frame Windows","TestAlertFrameWindows","","","test_new_tab",""
-"broken","Wed Sep 20 14:48:54 GMT 2023","Wed Sep 20 14:51:04 GMT 2023","129925","tests","Test Alert Frame Windows","TestAlertFrameWindows","","","test_new_window_page",""

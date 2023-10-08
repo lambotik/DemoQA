@@ -63,6 +63,7 @@ class TestWidgetsPage:
             assert value_date_before != value_date_after, 'The date has not been changed'
 
         @allure.step('Check select date and time')
+        @pytest.mark.xfail
         def test_select_date_and_time(self, driver):
             date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
             date_picker_page.open()

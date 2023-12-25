@@ -1,3 +1,9 @@
+## Technologies used in the project for automation:
+
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="80" heigh="80"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"  width="80" heigh="80"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" width="80" heigh="80"/> | <img src="https://github.com/allure-framework/allure2/blob/master/.idea/icon.png" width="80" heigh="80"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" width="80" heigh="80"/> |
+|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+___
+
 # https://demoqa.com/
 ## This is my Python test automation demo project and it's still in the works. The project will have many interesting solutions.
 
